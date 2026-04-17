@@ -1,0 +1,3013 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Dev Exam Guide 🔥</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&family=Unbounded:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #080810;
+        --surface: #0f0f1a;
+        --card: #13131f;
+        --card2: #161625;
+        --border: #252538;
+        --accent: #ff3c5f;
+        --blue: #4f8fff;
+        --green: #00e5a0;
+        --yellow: #ffd166;
+        --purple: #b48eff;
+        --text: #e8e8f4;
+        --muted: #6b6b8a;
+        --code-bg: #0a0a15;
+        --mono: "JetBrains Mono", monospace;
+        --display: "Unbounded", sans-serif;
+        --body: "DM Sans", sans-serif;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--body);
+        line-height: 1.75;
+        display: flex;
+      }
+
+      /* ══ SIDEBAR ══ */
+      #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 270px;
+        height: 100vh;
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        overflow-y: auto;
+        z-index: 200;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) transparent;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sidebar-logo {
+        padding: 24px 22px 20px;
+        border-bottom: 1px solid var(--border);
+      }
+      .sidebar-logo .tag {
+        font-family: var(--mono);
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .sidebar-logo h2 {
+        font-family: var(--display);
+        font-size: 0.95rem;
+        font-weight: 900;
+        color: var(--text);
+        margin-top: 4px;
+        line-height: 1.3;
+      }
+
+      .nav-group {
+        padding: 16px 0 8px;
+      }
+      .nav-label {
+        padding: 4px 22px 8px;
+        font-size: 0.58rem;
+        letter-spacing: 3.5px;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 700;
+        font-family: var(--mono);
+      }
+      .nav-label.blue {
+        color: var(--blue);
+      }
+      .nav-label.green {
+        color: var(--green);
+      }
+      .nav-label.yellow {
+        color: var(--yellow);
+      }
+      .nav-label.purple {
+        color: var(--purple);
+      }
+
+      #sidebar a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 7px 22px;
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 0.78rem;
+        font-weight: 500;
+        border-left: 3px solid transparent;
+        transition: all 0.18s;
+      }
+      #sidebar a:hover {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.04);
+        border-left-color: var(--accent);
+      }
+      #sidebar a .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--border);
+        flex-shrink: 0;
+        transition: background 0.18s;
+      }
+      #sidebar a:hover .dot {
+        background: var(--accent);
+      }
+      #sidebar a.blue-link:hover {
+        border-left-color: var(--blue);
+      }
+      #sidebar a.blue-link:hover .dot {
+        background: var(--blue);
+      }
+      #sidebar a.green-link:hover {
+        border-left-color: var(--green);
+      }
+      #sidebar a.green-link:hover .dot {
+        background: var(--green);
+      }
+      #sidebar a.yellow-link:hover {
+        border-left-color: var(--yellow);
+      }
+      #sidebar a.yellow-link:hover .dot {
+        background: var(--yellow);
+      }
+      #sidebar a.purple-link:hover {
+        border-left-color: var(--purple);
+      }
+      #sidebar a.purple-link:hover .dot {
+        background: var(--purple);
+      }
+
+      /* ══ MAIN ══ */
+      main {
+        margin-left: 270px;
+        padding: 52px 56px 100px;
+        max-width: 1080px;
+        width: 100%;
+      }
+
+      /* ══ PAGE HEADER ══ */
+      .page-header {
+        margin-bottom: 72px;
+        padding-bottom: 48px;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+      }
+      .page-header::before {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 120px;
+        height: 2px;
+        background: var(--accent);
+      }
+      .page-header .pre-tag {
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--accent);
+        display: inline-block;
+        margin-bottom: 14px;
+      }
+      .page-header h1 {
+        font-family: var(--display);
+        font-size: 2.8rem;
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -1px;
+        color: var(--text);
+        margin-bottom: 16px;
+      }
+      .page-header h1 span {
+        color: var(--accent);
+      }
+      .page-header p {
+        color: var(--muted);
+        font-size: 1rem;
+        max-width: 560px;
+      }
+      .badges {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+      .badge {
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        padding: 5px 12px;
+        border-radius: 4px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+      .badge.red {
+        background: rgba(255, 60, 95, 0.15);
+        color: var(--accent);
+        border: 1px solid rgba(255, 60, 95, 0.3);
+      }
+      .badge.blue {
+        background: rgba(79, 143, 255, 0.12);
+        color: var(--blue);
+        border: 1px solid rgba(79, 143, 255, 0.3);
+      }
+      .badge.green {
+        background: rgba(0, 229, 160, 0.1);
+        color: var(--green);
+        border: 1px solid rgba(0, 229, 160, 0.25);
+      }
+      .badge.yellow {
+        background: rgba(255, 209, 102, 0.12);
+        color: var(--yellow);
+        border: 1px solid rgba(255, 209, 102, 0.3);
+      }
+      .badge.purple {
+        background: rgba(180, 142, 255, 0.12);
+        color: var(--purple);
+        border: 1px solid rgba(180, 142, 255, 0.3);
+      }
+
+      /* ══ SECTION WRAPPERS ══ */
+      .section {
+        margin-bottom: 80px;
+        scroll-margin-top: 28px;
+      }
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 32px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--border);
+      }
+      .lec-badge {
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        padding: 5px 12px;
+        border-radius: 4px;
+        font-weight: 700;
+        white-space: nowrap;
+        letter-spacing: 1px;
+      }
+      .lec-badge.r {
+        background: var(--accent);
+        color: #fff;
+      }
+      .lec-badge.b {
+        background: var(--blue);
+        color: #fff;
+      }
+      .lec-badge.g {
+        background: var(--green);
+        color: #000;
+      }
+      .lec-badge.y {
+        background: var(--yellow);
+        color: #000;
+      }
+      .lec-badge.p {
+        background: var(--purple);
+        color: #fff;
+      }
+      .lec-badge.o {
+        background: #ff8c42;
+        color: #fff;
+      }
+      .lec-badge.t {
+        background: #06b6d4;
+        color: #000;
+      }
+
+      .section-header h2 {
+        font-family: var(--display);
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      /* ══ CONTENT BLOCKS ══ */
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .content-grid.three {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .content-grid.single {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 20px 22px;
+      }
+      .card h3 {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+      }
+      .card h3.red {
+        color: var(--accent);
+      }
+      .card h3.blue {
+        color: var(--blue);
+      }
+      .card h3.green {
+        color: var(--green);
+      }
+      .card h3.yellow {
+        color: var(--yellow);
+      }
+      .card h3.purple {
+        color: var(--purple);
+      }
+      .card h3.orange {
+        color: #ff8c42;
+      }
+      .card h3.teal {
+        color: #06b6d4;
+      }
+
+      .card p {
+        font-size: 0.88rem;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+      .card p strong {
+        color: var(--text);
+      }
+
+      /* ══ TABLES ══ */
+      .ref-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.82rem;
+        margin-bottom: 16px;
+      }
+      .ref-table th {
+        background: var(--card2);
+        padding: 10px 14px;
+        text-align: left;
+        font-family: var(--mono);
+        font-size: 0.65rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--muted);
+        border-bottom: 1px solid var(--border);
+      }
+      .ref-table td {
+        padding: 9px 14px;
+        border-bottom: 1px solid rgba(37, 37, 56, 0.6);
+        vertical-align: top;
+      }
+      .ref-table tr:last-child td {
+        border-bottom: none;
+      }
+      .ref-table tr:hover td {
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .ref-table td:first-child {
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        color: var(--accent);
+      }
+      .ref-table td:first-child.blue {
+        color: var(--blue);
+      }
+      .ref-table td:first-child.green {
+        color: var(--green);
+      }
+      .ref-table td:first-child.yellow {
+        color: var(--yellow);
+      }
+      .ref-table td:first-child.purple {
+        color: var(--purple);
+      }
+      .ref-table td:last-child {
+        color: var(--muted);
+      }
+
+      /* ══ CODE BLOCKS ══ */
+      .code-block {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 18px 20px;
+        margin: 14px 0;
+        overflow-x: auto;
+        position: relative;
+      }
+      .code-block .code-label {
+        font-family: var(--mono);
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--muted);
+        margin-bottom: 10px;
+        display: block;
+      }
+      .code-block pre {
+        font-family: var(--mono);
+        font-size: 0.82rem;
+        line-height: 1.7;
+        color: #c9d1d9;
+        white-space: pre;
+        overflow-x: auto;
+      }
+      .kw {
+        color: #ff79c6;
+      }
+      .fn {
+        color: #50fa7b;
+      }
+      .str {
+        color: #f1fa8c;
+      }
+      .cm {
+        color: #6272a4;
+        font-style: italic;
+      }
+      .num {
+        color: #bd93f9;
+      }
+      .prop {
+        color: #8be9fd;
+      }
+      .op {
+        color: #ff79c6;
+      }
+      .cls {
+        color: #ffb86c;
+      }
+
+      /* ══ IMPORTANT QUESTION CALLOUT ══ */
+      .important-banner {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 60, 95, 0.1),
+          rgba(255, 60, 95, 0.05)
+        );
+        border: 1px solid rgba(255, 60, 95, 0.35);
+        border-left: 4px solid var(--accent);
+        border-radius: 8px;
+        padding: 18px 22px;
+        margin-bottom: 28px;
+      }
+      .important-banner .ib-label {
+        font-family: var(--mono);
+        font-size: 0.6rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 6px;
+      }
+      .important-banner p {
+        font-size: 0.9rem;
+        color: var(--text);
+      }
+
+      .tip-banner {
+        background: rgba(0, 229, 160, 0.07);
+        border: 1px solid rgba(0, 229, 160, 0.2);
+        border-left: 4px solid var(--green);
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 14px 0;
+        font-size: 0.86rem;
+        color: var(--text);
+      }
+      .tip-banner strong {
+        color: var(--green);
+      }
+
+      .warn-banner {
+        background: rgba(255, 209, 102, 0.07);
+        border: 1px solid rgba(255, 209, 102, 0.2);
+        border-left: 4px solid var(--yellow);
+        border-radius: 8px;
+        padding: 14px 18px;
+        margin: 14px 0;
+        font-size: 0.86rem;
+        color: var(--text);
+      }
+      .warn-banner strong {
+        color: var(--yellow);
+      }
+
+      /* ══ DIVIDER ══ */
+      .divider {
+        height: 1px;
+        background: var(--border);
+        margin: 28px 0;
+        position: relative;
+      }
+
+      /* ══ SUBSECTION ══ */
+      .subsection {
+        margin-bottom: 28px;
+      }
+      .subsection h4 {
+        font-family: var(--display);
+        font-size: 0.95rem;
+        font-weight: 700;
+        margin-bottom: 14px;
+        color: var(--text);
+      }
+      .subsection h4 .sub-num {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        color: var(--muted);
+        margin-right: 8px;
+      }
+
+      /* ══ INLINE CODE ══ */
+      code {
+        font-family: var(--mono);
+        font-size: 0.82em;
+        background: rgba(255, 255, 255, 0.06);
+        padding: 2px 7px;
+        border-radius: 4px;
+        color: var(--accent);
+      }
+
+      /* ══ LISTS ══ */
+      ul.styled,
+      ol.styled {
+        padding-left: 22px;
+        margin: 10px 0;
+      }
+      ul.styled li,
+      ol.styled li {
+        font-size: 0.88rem;
+        color: var(--muted);
+        margin-bottom: 6px;
+        line-height: 1.6;
+      }
+      ul.styled li strong,
+      ol.styled li strong {
+        color: var(--text);
+      }
+
+      /* ══ ASSIGNMENT SECTION ══ */
+      .assignment-section {
+        background: linear-gradient(
+          135deg,
+          rgba(79, 143, 255, 0.08),
+          rgba(79, 143, 255, 0.03)
+        );
+        border: 1px solid rgba(79, 143, 255, 0.2);
+        border-radius: 12px;
+        padding: 28px 30px;
+        margin-bottom: 28px;
+      }
+      .assignment-section h3 {
+        font-family: var(--display);
+        font-size: 1.05rem;
+        color: var(--blue);
+        margin-bottom: 16px;
+      }
+
+      /* ══ VISUAL DEMO BOXES ══ */
+      .demo-box {
+        background: var(--card2);
+        border: 1px dashed var(--border);
+        border-radius: 8px;
+        padding: 20px;
+        margin: 14px 0;
+        font-size: 0.85rem;
+      }
+      .demo-box .demo-label {
+        font-family: var(--mono);
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+        color: var(--muted);
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      /* responsive */
+      @media (max-width: 900px) {
+        #sidebar {
+          display: none;
+        }
+        main {
+          margin-left: 0;
+          padding: 28px 20px;
+        }
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+        .content-grid.three {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════ SIDEBAR ══════════ -->
+    <nav id="sidebar">
+      <div class="sidebar-logo">
+        <div class="tag">// exam prep</div>
+        <h2>Web Dev<br />Study Guide</h2>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label">HTML</div>
+        <a href="#html"><span class="dot"></span>L1 — HTML Fundamentals</a>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label" style="color: #6a4c93">CSS</div>
+        <a href="#css-box" class="purple-link"
+          ><span class="dot"></span>L3 — Box Model</a
+        >
+        <a href="#css-flex" class="purple-link"
+          ><span class="dot"></span>L4 — Flexbox &amp; Grid ⭐</a
+        >
+        <a href="#css-adv" class="purple-link"
+          ><span class="dot"></span>L5 — Advanced CSS</a
+        >
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label blue">Tailwind</div>
+        <a href="#tw-basics" class="blue-link"
+          ><span class="dot"></span>L6 — Tailwind Basics</a
+        >
+        <a href="#tw-adv" class="blue-link"
+          ><span class="dot"></span>L7 — Advanced Tailwind</a
+        >
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label green">JavaScript</div>
+        <a href="#js-types" class="green-link"
+          ><span class="dot"></span>JS Data Types &amp; Nesting</a
+        >
+        <a href="#js-arrow" class="green-link"
+          ><span class="dot"></span>Arrow, Map &amp; Filter ⭐</a
+        >
+        <a href="#js-es6" class="green-link"
+          ><span class="dot"></span>Spread, Rest &amp; Destructuring</a
+        >
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label yellow">Assignment</div>
+        <a href="#assign" class="yellow-link"
+          ><span class="dot"></span>Employee Profile Generator</a
+        >
+        <a href="#assign-sol" class="yellow-link"
+          ><span class="dot"></span>Full Solution (profiles.js)</a
+        >
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-label" style="color: var(--accent)">Exam Questions</div>
+        <a href="#eq-flex"><span class="dot"></span>Q1 — Flexbox ⭐</a>
+        <a href="#eq-methods"
+          ><span class="dot"></span>Q2 — map/filter/reduce ⭐</a
+        >
+        <a href="#eq-buttons"
+          ><span class="dot"></span>Q3 — Buttons in HTML/CSS</a
+        >
+        <a href="#eq-condition"
+          ><span class="dot"></span>Q4 — Conditional Colour</a
+        >
+        <a href="#eq-json"><span class="dot"></span>Q5 — JSON Extraction</a>
+      </div>
+    </nav>
+
+    <!-- ══════════ MAIN ══════════ -->
+    <main>
+      <!-- PAGE HEADER -->
+      <div class="page-header">
+        <div class="pre-tag">// web development · exam prep</div>
+        <h1>Complete<br /><span>Study Guide</span></h1>
+        <p>
+          All lecture cheatsheets · JS deep dives · assignment solution · exam
+          questions — everything in one place.
+        </p>
+        <div class="badges">
+          <span class="badge red">HTML</span>
+          <span class="badge purple">CSS · Flexbox · Grid</span>
+          <span class="badge blue">Tailwind CSS</span>
+          <span class="badge green">JavaScript ES6</span>
+          <span class="badge yellow">Assignment</span>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════
+     LECTURE 1 — HTML FUNDAMENTALS
+═════════════════════════════════════ -->
+      <section class="section" id="html">
+        <div class="section-header">
+          <span class="lec-badge r">LECTURE 1</span>
+          <h2>HTML Fundamentals &amp; Document Structure</h2>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">01</span>HTML Document Skeleton</h4>
+          <div class="code-block">
+            <span class="code-label">every html file starts with this</span>
+            <pre><span class="kw">&lt;!DOCTYPE html&gt;</span>
+<span class="kw">&lt;html</span> <span class="prop">lang</span>=<span class="str">"en"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;head&gt;</span>
+    <span class="kw">&lt;meta</span> <span class="prop">charset</span>=<span class="str">"UTF-8"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;meta</span> <span class="prop">name</span>=<span class="str">"viewport"</span> <span class="prop">content</span>=<span class="str">"width=device-width, initial-scale=1.0"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;title&gt;</span>Page Title<span class="kw">&lt;/title&gt;</span>
+  <span class="kw">&lt;/head&gt;</span>
+  <span class="kw">&lt;body&gt;</span>
+    <span class="cm">&lt;!-- visible content goes here --&gt;</span>
+  <span class="kw">&lt;/body&gt;</span>
+<span class="kw">&lt;/html&gt;</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">02</span>Common HTML Elements</h4>
+          <div class="content-grid three">
+            <div class="card">
+              <h3 class="red">Structure</h3>
+              <table class="ref-table">
+                <tr>
+                  <td>h1–h6</td>
+                  <td>Headings</td>
+                </tr>
+                <tr>
+                  <td>p</td>
+                  <td>Paragraph</td>
+                </tr>
+                <tr>
+                  <td>div</td>
+                  <td>Block container</td>
+                </tr>
+                <tr>
+                  <td>span</td>
+                  <td>Inline container</td>
+                </tr>
+                <tr>
+                  <td>header</td>
+                  <td>Page/section header</td>
+                </tr>
+                <tr>
+                  <td>nav</td>
+                  <td>Navigation</td>
+                </tr>
+                <tr>
+                  <td>main</td>
+                  <td>Main content</td>
+                </tr>
+                <tr>
+                  <td>footer</td>
+                  <td>Footer</td>
+                </tr>
+                <tr>
+                  <td>section</td>
+                  <td>Thematic section</td>
+                </tr>
+                <tr>
+                  <td>article</td>
+                  <td>Standalone content</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card">
+              <h3 class="red">Content</h3>
+              <table class="ref-table">
+                <tr>
+                  <td>a</td>
+                  <td>Link — needs href</td>
+                </tr>
+                <tr>
+                  <td>img</td>
+                  <td>Image — needs src, alt</td>
+                </tr>
+                <tr>
+                  <td>ul / ol</td>
+                  <td>Lists</td>
+                </tr>
+                <tr>
+                  <td>li</td>
+                  <td>List item</td>
+                </tr>
+                <tr>
+                  <td>table</td>
+                  <td>Table wrapper</td>
+                </tr>
+                <tr>
+                  <td>tr</td>
+                  <td>Table row</td>
+                </tr>
+                <tr>
+                  <td>th</td>
+                  <td>Header cell</td>
+                </tr>
+                <tr>
+                  <td>td</td>
+                  <td>Data cell</td>
+                </tr>
+                <tr>
+                  <td>br</td>
+                  <td>Line break (self-closing)</td>
+                </tr>
+                <tr>
+                  <td>hr</td>
+                  <td>Horizontal rule</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card">
+              <h3 class="red">Forms</h3>
+              <table class="ref-table">
+                <tr>
+                  <td>form</td>
+                  <td>Form wrapper</td>
+                </tr>
+                <tr>
+                  <td>input</td>
+                  <td>Text / checkbox / radio</td>
+                </tr>
+                <tr>
+                  <td>textarea</td>
+                  <td>Multi-line text</td>
+                </tr>
+                <tr>
+                  <td>button</td>
+                  <td>Clickable button</td>
+                </tr>
+                <tr>
+                  <td>label</td>
+                  <td>Label for input</td>
+                </tr>
+                <tr>
+                  <td>select</td>
+                  <td>Dropdown</td>
+                </tr>
+                <tr>
+                  <td>option</td>
+                  <td>Dropdown item</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="subsection">
+            <h4><span class="sub-num">03</span>Link &amp; Image Anatomy</h4>
+            <div class="code-block">
+              <pre><span class="cm">&lt;!-- Link --&gt;</span>
+<span class="kw">&lt;a</span> <span class="prop">href</span>=<span class="str">"https://example.com"</span>
+   <span class="prop">target</span>=<span class="str">"_blank"</span><span class="kw">&gt;</span>Click me<span class="kw">&lt;/a&gt;</span>
+
+<span class="cm">&lt;!-- Image --&gt;</span>
+<span class="kw">&lt;img</span> <span class="prop">src</span>=<span class="str">"photo.jpg"</span>
+     <span class="prop">alt</span>=<span class="str">"Description"</span>
+     <span class="prop">width</span>=<span class="str">"300"</span><span class="kw">&gt;</span></pre>
+            </div>
+          </div>
+          <div class="subsection">
+            <h4><span class="sub-num">04</span>Nesting Rules</h4>
+            <div class="tip-banner">
+              <strong>✓ Block elements</strong> can wrap inline elements.
+              <code>div</code> can contain <code>span</code>.
+            </div>
+            <div class="warn-banner">
+              <strong>✗ Never nest</strong> block in inline — no
+              <code>p</code> inside <code>span</code>, no
+              <code>div</code> inside <code>a</code> (mostly).
+            </div>
+            <div class="code-block">
+              <pre><span class="cm">&lt;!-- Common mistakes to AVOID --&gt;</span>
+<span class="cm">&lt;!-- 1. Missing closing tag --&gt;</span>
+<span class="kw">&lt;p&gt;</span>Hello  <span class="cm">&lt;!-- no &lt;/p&gt; --&gt;</span>
+
+<span class="cm">&lt;!-- 2. Missing alt on img --&gt;</span>
+<span class="kw">&lt;img</span> <span class="prop">src</span>=<span class="str">"pic.jpg"</span><span class="kw">&gt;</span> <span class="cm">&lt;!-- bad --&gt;</span>
+
+<span class="cm">&lt;!-- 3. Protocol-less links --&gt;</span>
+<span class="kw">&lt;a</span> <span class="prop">href</span>=<span class="str">"www.site.com"</span><span class="kw">&gt;</span>bad<span class="kw">&lt;/a&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">05</span>HTML Entities (Special Characters)
+          </h4>
+          <div class="card">
+            <table class="ref-table">
+              <thead>
+                <tr>
+                  <th>Character</th>
+                  <th>Entity</th>
+                  <th>Character</th>
+                  <th>Entity</th>
+                </tr>
+              </thead>
+              <tr>
+                <td>&amp;</td>
+                <td>&amp;amp;</td>
+                <td class="blue">&lt;</td>
+                <td>&amp;lt;</td>
+              </tr>
+              <tr>
+                <td>&gt;</td>
+                <td>&amp;gt;</td>
+                <td class="blue">"</td>
+                <td>&amp;quot;</td>
+              </tr>
+              <tr>
+                <td>©</td>
+                <td>&amp;copy;</td>
+                <td class="blue">®</td>
+                <td>&amp;reg;</td>
+              </tr>
+              <tr>
+                <td>(space)</td>
+                <td>&amp;nbsp;</td>
+                <td class="blue">→</td>
+                <td>&amp;rarr;</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     LECTURE 3 — CSS BOX MODEL
+═════════════════════════════════════ -->
+      <section class="section" id="css-box">
+        <div class="section-header">
+          <span class="lec-badge p">LECTURE 3</span>
+          <h2>CSS Fundamentals &amp; The Box Model</h2>
+        </div>
+
+        <div class="content-grid">
+          <div class="subsection">
+            <h4><span class="sub-num">01</span>3 Ways to Add CSS</h4>
+            <table class="ref-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>How / Use</th>
+                </tr>
+              </thead>
+              <tr>
+                <td class="purple">Inline</td>
+                <td><code>style="color:red"</code> — avoid</td>
+              </tr>
+              <tr>
+                <td class="purple">Internal</td>
+                <td><code>&lt;style&gt;</code> in <code>&lt;head&gt;</code></td>
+              </tr>
+              <tr>
+                <td class="purple">External</td>
+                <td>
+                  <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="subsection">
+            <h4><span class="sub-num">02</span>Specificity (0–0–0)</h4>
+            <table class="ref-table">
+              <thead>
+                <tr>
+                  <th>Selector</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tr>
+                <td class="purple">!important</td>
+                <td>Overrides all</td>
+              </tr>
+              <tr>
+                <td class="purple">#id</td>
+                <td>1-0-0</td>
+              </tr>
+              <tr>
+                <td class="purple">.class / :hover</td>
+                <td>0-1-0</td>
+              </tr>
+              <tr>
+                <td class="purple">tag (p, div)</td>
+                <td>0-0-1</td>
+              </tr>
+              <tr>
+                <td class="purple">*</td>
+                <td>0-0-0</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">03</span>The Box Model</h4>
+          <div class="tip-banner">
+            <strong>Key formula:</strong> Total width = content + padding-left +
+            padding-right + border-left + border-right + margin-left +
+            margin-right
+          </div>
+          <div class="code-block">
+            <pre><span class="prop">.box</span> {
+  <span class="prop">width</span>: <span class="num">200px</span>;         <span class="cm">/* content width */</span>
+  <span class="prop">padding</span>: <span class="num">20px</span>;        <span class="cm">/* space inside border */</span>
+  <span class="prop">border</span>: <span class="num">2px</span> solid red; <span class="cm">/* the border itself */</span>
+  <span class="prop">margin</span>: <span class="num">10px</span>;         <span class="cm">/* space outside border */</span>
+
+  <span class="cm">/* FIX: border-box makes width INCLUDE padding+border */</span>
+  <span class="prop">box-sizing</span>: border-box;
+}</pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">04</span>Common CSS Properties Quick Ref
+          </h4>
+          <div class="content-grid three">
+            <div class="card">
+              <h3 class="purple">Typography</h3>
+              <table class="ref-table">
+                <tr>
+                  <td>font-size</td>
+                  <td>16px / 1rem</td>
+                </tr>
+                <tr>
+                  <td>font-weight</td>
+                  <td>400 / bold / 700</td>
+                </tr>
+                <tr>
+                  <td>font-family</td>
+                  <td>'Arial', sans-serif</td>
+                </tr>
+                <tr>
+                  <td>line-height</td>
+                  <td>1.5 (unitless)</td>
+                </tr>
+                <tr>
+                  <td>text-align</td>
+                  <td>left/center/right</td>
+                </tr>
+                <tr>
+                  <td>color</td>
+                  <td>#hex / rgb()</td>
+                </tr>
+                <tr>
+                  <td>text-decoration</td>
+                  <td>none / underline</td>
+                </tr>
+                <tr>
+                  <td>letter-spacing</td>
+                  <td>2px</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card">
+              <h3 class="purple">Layout</h3>
+              <table class="ref-table">
+                <tr>
+                  <td>display</td>
+                  <td>block/inline/flex/grid</td>
+                </tr>
+                <tr>
+                  <td>position</td>
+                  <td>static/relative/absolute/fixed</td>
+                </tr>
+                <tr>
+                  <td>top/left</td>
+                  <td>Used with position</td>
+                </tr>
+                <tr>
+                  <td>z-index</td>
+                  <td>Stacking order</td>
+                </tr>
+                <tr>
+                  <td>overflow</td>
+                  <td>hidden/scroll/auto</td>
+                </tr>
+                <tr>
+                  <td>visibility</td>
+                  <td>hidden (keeps space)</td>
+                </tr>
+                <tr>
+                  <td>opacity</td>
+                  <td>0 to 1</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card">
+              <h3 class="purple">Visual</h3>
+              <table class="ref-table">
+                <tr>
+                  <td>background</td>
+                  <td>color/image/gradient</td>
+                </tr>
+                <tr>
+                  <td>border-radius</td>
+                  <td>50% = circle</td>
+                </tr>
+                <tr>
+                  <td>box-shadow</td>
+                  <td>x y blur color</td>
+                </tr>
+                <tr>
+                  <td>cursor</td>
+                  <td>pointer/default</td>
+                </tr>
+                <tr>
+                  <td>transition</td>
+                  <td>prop dur ease</td>
+                </tr>
+                <tr>
+                  <td>transform</td>
+                  <td>rotate/scale/translate</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     LECTURE 4 — FLEXBOX & CSS GRID
+═════════════════════════════════════ -->
+      <section class="section" id="css-flex">
+        <div class="section-header">
+          <span class="lec-badge y">LECTURE 4</span>
+          <h2>Flexbox &amp; CSS Grid Mastery ⭐ EXAM FOCUS</h2>
+        </div>
+
+        <div class="important-banner">
+          <div class="ib-label">⚠ Exam important — must know</div>
+          <p>
+            Flexbox is explicitly called out by your teacher. Know the container
+            vs item properties cold.
+          </p>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">01</span>Flexbox — Container Properties</h4>
+          <div class="code-block">
+            <span class="code-label">activate flexbox on the parent</span>
+            <pre><span class="prop">.container</span> {
+  <span class="prop">display</span>: flex;              <span class="cm">/* enables flexbox */</span>
+  <span class="prop">flex-direction</span>: row;         <span class="cm">/* row | column | row-reverse | column-reverse */</span>
+  <span class="prop">justify-content</span>: center;    <span class="cm">/* main axis — flex-start | flex-end | center | space-between | space-around | space-evenly */</span>
+  <span class="prop">align-items</span>: center;        <span class="cm">/* cross axis — flex-start | flex-end | center | stretch | baseline */</span>
+  <span class="prop">flex-wrap</span>: wrap;            <span class="cm">/* nowrap | wrap | wrap-reverse */</span>
+  <span class="prop">gap</span>: 16px;                  <span class="cm">/* space between items */</span>
+}</pre>
+          </div>
+          <div class="content-grid">
+            <div class="card">
+              <h3 class="yellow">justify-content (main axis)</h3>
+              <table class="ref-table">
+                <tr>
+                  <td class="yellow">flex-start</td>
+                  <td>Items pack to start</td>
+                </tr>
+                <tr>
+                  <td class="yellow">flex-end</td>
+                  <td>Items pack to end</td>
+                </tr>
+                <tr>
+                  <td class="yellow">center</td>
+                  <td>Items centered</td>
+                </tr>
+                <tr>
+                  <td class="yellow">space-between</td>
+                  <td>Equal space between items</td>
+                </tr>
+                <tr>
+                  <td class="yellow">space-around</td>
+                  <td>Equal space around items</td>
+                </tr>
+                <tr>
+                  <td class="yellow">space-evenly</td>
+                  <td>Equal space everywhere</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card">
+              <h3 class="yellow">align-items (cross axis)</h3>
+              <table class="ref-table">
+                <tr>
+                  <td class="yellow">flex-start</td>
+                  <td>Top of container</td>
+                </tr>
+                <tr>
+                  <td class="yellow">flex-end</td>
+                  <td>Bottom of container</td>
+                </tr>
+                <tr>
+                  <td class="yellow">center</td>
+                  <td>Vertically centered</td>
+                </tr>
+                <tr>
+                  <td class="yellow">stretch</td>
+                  <td>Fill height (default)</td>
+                </tr>
+                <tr>
+                  <td class="yellow">baseline</td>
+                  <td>Align text baselines</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">02</span>Flexbox — Item Properties</h4>
+          <div class="code-block">
+            <span class="code-label">these go on the children</span>
+            <pre><span class="prop">.item</span> {
+  <span class="prop">flex</span>: 1;                 <span class="cm">/* shorthand for flex-grow flex-shrink flex-basis */</span>
+  <span class="prop">flex-grow</span>: 1;            <span class="cm">/* how much item grows to fill space */</span>
+  <span class="prop">flex-shrink</span>: 0;          <span class="cm">/* 0 = won't shrink below flex-basis */</span>
+  <span class="prop">flex-basis</span>: 200px;       <span class="cm">/* starting size before free space is distributed */</span>
+  <span class="prop">align-self</span>: flex-end;    <span class="cm">/* override align-items for THIS item */</span>
+  <span class="prop">order</span>: 2;                <span class="cm">/* default is 0, can be negative */</span>
+}</pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">03</span>Centering Everything with Flexbox
+          </h4>
+          <div class="tip-banner">
+            <strong>The most common flex trick:</strong> perfectly center a
+            child both horizontally and vertically.
+          </div>
+          <div class="code-block">
+            <pre><span class="prop">.parent</span> {
+  <span class="prop">display</span>: flex;
+  <span class="prop">justify-content</span>: center;  <span class="cm">/* horizontal */</span>
+  <span class="prop">align-items</span>: center;      <span class="cm">/* vertical */</span>
+  <span class="prop">height</span>: <span class="num">100vh</span>;
+}</pre>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">04</span>CSS Grid — Container Properties
+          </h4>
+          <div class="code-block">
+            <pre><span class="prop">.grid</span> {
+  <span class="prop">display</span>: grid;
+  <span class="prop">grid-template-columns</span>: 1fr 2fr 1fr;   <span class="cm">/* 3 cols: 25% 50% 25% */</span>
+  <span class="prop">grid-template-columns</span>: repeat(3, 1fr); <span class="cm">/* same thing */</span>
+  <span class="prop">grid-template-rows</span>: 100px auto;       <span class="cm">/* row heights */</span>
+  <span class="prop">gap</span>: 20px;                            <span class="cm">/* row-gap + column-gap */</span>
+  <span class="prop">justify-items</span>: center;               <span class="cm">/* align content in cells horizontally */</span>
+  <span class="prop">align-items</span>: center;                 <span class="cm">/* align content in cells vertically */</span>
+}</pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">05</span>CSS Grid — Item Properties</h4>
+          <div class="code-block">
+            <pre><span class="prop">.item</span> {
+  <span class="prop">grid-column</span>: 1 / 3;    <span class="cm">/* span from col line 1 to 3 (= span 2 cols) */</span>
+  <span class="prop">grid-column</span>: span 2;   <span class="cm">/* same: span 2 columns */</span>
+  <span class="prop">grid-row</span>: 1 / 3;       <span class="cm">/* span 2 rows */</span>
+  <span class="prop">justify-self</span>: end;     <span class="cm">/* override for this one item */</span>
+  <span class="prop">align-self</span>: start;
+}</pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">06</span>Flexbox vs Grid — When to Use Which
+          </h4>
+          <div class="content-grid">
+            <div class="card">
+              <h3 class="yellow">Use Flexbox when…</h3>
+              <ul class="styled">
+                <li>
+                  <strong>1D layout</strong> — items in a single row or column
+                </li>
+                <li>Navigation bars</li>
+                <li>Centering one element</li>
+                <li>Distributing items dynamically</li>
+                <li>Card rows that can wrap</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3 class="yellow">Use Grid when…</h3>
+              <ul class="styled">
+                <li>
+                  <strong>2D layout</strong> — rows AND columns simultaneously
+                </li>
+                <li>Full page layouts</li>
+                <li>Dashboard/magazine grids</li>
+                <li>Items that must align in both directions</li>
+                <li>Complex overlapping layouts</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     LECTURE 5 — ADVANCED CSS
+═════════════════════════════════════ -->
+      <section class="section" id="css-adv">
+        <div class="section-header">
+          <span class="lec-badge p">LECTURE 5</span>
+          <h2>Advanced CSS &amp; Responsive Design</h2>
+        </div>
+
+        <div class="content-grid">
+          <div class="subsection">
+            <h4><span class="sub-num">01</span>CSS Custom Properties</h4>
+            <div class="code-block">
+              <pre><span class="cm">/* Declare on :root (global) */</span>
+<span class="prop">:root</span> {
+  <span class="prop">--primary</span>: #ff3c5f;
+  <span class="prop">--spacing</span>: 16px;
+}
+
+<span class="cm">/* Use anywhere */</span>
+<span class="prop">.card</span> {
+  <span class="prop">color</span>: var(<span class="prop">--primary</span>);
+  <span class="prop">padding</span>: var(<span class="prop">--spacing</span>);
+}</pre>
+            </div>
+          </div>
+          <div class="subsection">
+            <h4><span class="sub-num">02</span>Responsive Units</h4>
+            <table class="ref-table">
+              <thead>
+                <tr>
+                  <th>Unit</th>
+                  <th>Meaning</th>
+                </tr>
+              </thead>
+              <tr>
+                <td class="purple">px</td>
+                <td>Fixed pixels</td>
+              </tr>
+              <tr>
+                <td class="purple">%</td>
+                <td>Relative to parent</td>
+              </tr>
+              <tr>
+                <td class="purple">em</td>
+                <td>Relative to current font-size</td>
+              </tr>
+              <tr>
+                <td class="purple">rem</td>
+                <td>Relative to root font-size (16px)</td>
+              </tr>
+              <tr>
+                <td class="purple">vw</td>
+                <td>1% of viewport width</td>
+              </tr>
+              <tr>
+                <td class="purple">vh</td>
+                <td>1% of viewport height</td>
+              </tr>
+              <tr>
+                <td class="purple">fr</td>
+                <td>Fraction of grid space</td>
+              </tr>
+              <tr>
+                <td class="purple">clamp()</td>
+                <td>min / ideal / max</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">03</span>Media Queries (Mobile First)</h4>
+          <div class="code-block">
+            <pre><span class="cm">/* Mobile first: default styles are for small screens */</span>
+<span class="prop">.container</span> { <span class="prop">font-size</span>: <span class="num">14px</span>; }
+
+<span class="cm">/* Tablet ≥ 768px */</span>
+<span class="kw">@media</span> (min-width: <span class="num">768px</span>) {
+  <span class="prop">.container</span> { <span class="prop">font-size</span>: <span class="num">16px</span>; }
+}
+
+<span class="cm">/* Desktop ≥ 1024px */</span>
+<span class="kw">@media</span> (min-width: <span class="num">1024px</span>) {
+  <span class="prop">.container</span> { <span class="prop">font-size</span>: <span class="num">18px</span>; }
+}</pre>
+          </div>
+          <div class="content-grid three">
+            <div class="card">
+              <h3 class="purple">Breakpoints</h3>
+              <table class="ref-table">
+                <tr>
+                  <td class="purple">sm</td>
+                  <td>640px</td>
+                </tr>
+                <tr>
+                  <td class="purple">md</td>
+                  <td>768px</td>
+                </tr>
+                <tr>
+                  <td class="purple">lg</td>
+                  <td>1024px</td>
+                </tr>
+                <tr>
+                  <td class="purple">xl</td>
+                  <td>1280px</td>
+                </tr>
+                <tr>
+                  <td class="purple">2xl</td>
+                  <td>1536px</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card">
+              <h3 class="purple">CSS Transitions</h3>
+              <table class="ref-table">
+                <tr>
+                  <td class="purple">ease</td>
+                  <td>Slow-fast-slow</td>
+                </tr>
+                <tr>
+                  <td class="purple">linear</td>
+                  <td>Constant speed</td>
+                </tr>
+                <tr>
+                  <td class="purple">ease-in</td>
+                  <td>Slow start</td>
+                </tr>
+                <tr>
+                  <td class="purple">ease-out</td>
+                  <td>Slow end</td>
+                </tr>
+                <tr>
+                  <td class="purple">ease-in-out</td>
+                  <td>Both ends slow</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card">
+              <h3 class="purple">Pseudo Classes</h3>
+              <table class="ref-table">
+                <tr>
+                  <td class="purple">:hover</td>
+                  <td>On mouse over</td>
+                </tr>
+                <tr>
+                  <td class="purple">:focus</td>
+                  <td>Input focused</td>
+                </tr>
+                <tr>
+                  <td class="purple">:active</td>
+                  <td>Being clicked</td>
+                </tr>
+                <tr>
+                  <td class="purple">:nth-child(n)</td>
+                  <td>Specific child</td>
+                </tr>
+                <tr>
+                  <td class="purple">:first-child</td>
+                  <td>First child</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">04</span>The :root Promise &amp; Animations
+          </h4>
+          <div class="code-block">
+            <pre><span class="cm">/* Keyframe animation */</span>
+<span class="kw">@keyframes</span> fadeIn {
+  <span class="prop">from</span> { <span class="prop">opacity</span>: <span class="num">0</span>; <span class="prop">transform</span>: translateY(<span class="num">-20px</span>); }
+  <span class="prop">to</span>   { <span class="prop">opacity</span>: <span class="num">1</span>; <span class="prop">transform</span>: translateY(<span class="num">0</span>); }
+}
+
+<span class="prop">.element</span> {
+  <span class="prop">animation</span>: fadeIn <span class="num">0.4s</span> ease-out;
+}
+
+<span class="cm">/* Hover transition */</span>
+<span class="prop">.btn</span> {
+  <span class="prop">transition</span>: background <span class="num">0.3s</span> ease, transform <span class="num">0.2s</span>;
+}
+<span class="prop">.btn</span>:hover { <span class="prop">transform</span>: scale(<span class="num">1.05</span>); }</pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     LECTURE 6 — TAILWIND BASICS
+═════════════════════════════════════ -->
+      <section class="section" id="tw-basics">
+        <div class="section-header">
+          <span class="lec-badge b">LECTURE 6</span>
+          <h2>Tailwind CSS Basics</h2>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">01</span>Setup via CDN</h4>
+          <div class="code-block">
+            <pre><span class="kw">&lt;script</span> <span class="prop">src</span>=<span class="str">"https://cdn.tailwindcss.com"</span><span class="kw">&gt;&lt;/script&gt;</span>
+<span class="cm">&lt;!-- Put in &lt;head&gt;. Now you can use Tailwind classes directly. --&gt;</span></pre>
+          </div>
+        </div>
+
+        <div class="content-grid">
+          <div class="subsection">
+            <h4><span class="sub-num">02</span>Spacing (Padding / Margin)</h4>
+            <table class="ref-table">
+              <thead>
+                <tr>
+                  <th>Class</th>
+                  <th>CSS</th>
+                </tr>
+              </thead>
+              <tr>
+                <td class="blue">p-4</td>
+                <td>padding: 1rem (16px)</td>
+              </tr>
+              <tr>
+                <td class="blue">px-4</td>
+                <td>padding left &amp; right</td>
+              </tr>
+              <tr>
+                <td class="blue">py-4</td>
+                <td>padding top &amp; bottom</td>
+              </tr>
+              <tr>
+                <td class="blue">pt-2 / pb-2</td>
+                <td>padding top / bottom</td>
+              </tr>
+              <tr>
+                <td class="blue">m-4</td>
+                <td>margin: 1rem</td>
+              </tr>
+              <tr>
+                <td class="blue">mx-auto</td>
+                <td>horizontal center</td>
+              </tr>
+              <tr>
+                <td class="blue">mt-8</td>
+                <td>margin-top: 2rem</td>
+              </tr>
+              <tr>
+                <td class="blue">gap-4</td>
+                <td>gap: 1rem (flex/grid)</td>
+              </tr>
+            </table>
+          </div>
+          <div class="subsection">
+            <h4><span class="sub-num">02b</span>Sizing</h4>
+            <table class="ref-table">
+              <thead>
+                <tr>
+                  <th>Class</th>
+                  <th>CSS</th>
+                </tr>
+              </thead>
+              <tr>
+                <td class="blue">w-full</td>
+                <td>width: 100%</td>
+              </tr>
+              <tr>
+                <td class="blue">w-1/2</td>
+                <td>width: 50%</td>
+              </tr>
+              <tr>
+                <td class="blue">w-64</td>
+                <td>width: 16rem</td>
+              </tr>
+              <tr>
+                <td class="blue">h-screen</td>
+                <td>height: 100vh</td>
+              </tr>
+              <tr>
+                <td class="blue">h-full</td>
+                <td>height: 100%</td>
+              </tr>
+              <tr>
+                <td class="blue">max-w-lg</td>
+                <td>max-width: 32rem</td>
+              </tr>
+              <tr>
+                <td class="blue">min-h-0</td>
+                <td>min-height: 0</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="content-grid three">
+          <div class="card">
+            <h3 class="blue">Flexbox in Tailwind</h3>
+            <table class="ref-table">
+              <tr>
+                <td class="blue">flex</td>
+                <td>display: flex</td>
+              </tr>
+              <tr>
+                <td class="blue">flex-col</td>
+                <td>flex-direction: column</td>
+              </tr>
+              <tr>
+                <td class="blue">items-center</td>
+                <td>align-items: center</td>
+              </tr>
+              <tr>
+                <td class="blue">justify-center</td>
+                <td>justify-content: center</td>
+              </tr>
+              <tr>
+                <td class="blue">justify-between</td>
+                <td>space-between</td>
+              </tr>
+              <tr>
+                <td class="blue">flex-wrap</td>
+                <td>flex-wrap: wrap</td>
+              </tr>
+              <tr>
+                <td class="blue">flex-1</td>
+                <td>flex: 1 1 0%</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card">
+            <h3 class="blue">Typography</h3>
+            <table class="ref-table">
+              <tr>
+                <td class="blue">text-sm</td>
+                <td>0.875rem</td>
+              </tr>
+              <tr>
+                <td class="blue">text-base</td>
+                <td>1rem</td>
+              </tr>
+              <tr>
+                <td class="blue">text-xl</td>
+                <td>1.25rem</td>
+              </tr>
+              <tr>
+                <td class="blue">text-4xl</td>
+                <td>2.25rem</td>
+              </tr>
+              <tr>
+                <td class="blue">font-bold</td>
+                <td>font-weight: 700</td>
+              </tr>
+              <tr>
+                <td class="blue">text-center</td>
+                <td>text-align: center</td>
+              </tr>
+              <tr>
+                <td class="blue">uppercase</td>
+                <td>text-transform</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card">
+            <h3 class="blue">Colors &amp; Borders</h3>
+            <table class="ref-table">
+              <tr>
+                <td class="blue">bg-blue-500</td>
+                <td>background color</td>
+              </tr>
+              <tr>
+                <td class="blue">text-red-600</td>
+                <td>text color</td>
+              </tr>
+              <tr>
+                <td class="blue">border</td>
+                <td>1px solid</td>
+              </tr>
+              <tr>
+                <td class="blue">border-gray-300</td>
+                <td>border color</td>
+              </tr>
+              <tr>
+                <td class="blue">rounded</td>
+                <td>border-radius: 4px</td>
+              </tr>
+              <tr>
+                <td class="blue">rounded-full</td>
+                <td>border-radius: 9999px</td>
+              </tr>
+              <tr>
+                <td class="blue">shadow-lg</td>
+                <td>large box shadow</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">03</span>Responsive Prefixes</h4>
+          <div class="code-block">
+            <pre><span class="cm">&lt;!-- Mobile: 1 col. Tablet: 2 cols. Desktop: 3 cols --&gt;</span>
+<span class="kw">&lt;div</span> <span class="prop">class</span>=<span class="str">"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"</span><span class="kw">&gt;</span>
+  ...
+<span class="kw">&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- Show only on mobile, hide on md and above --&gt;</span>
+<span class="kw">&lt;div</span> <span class="prop">class</span>=<span class="str">"block md:hidden"</span><span class="kw">&gt;</span>Mobile only<span class="kw">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">04</span>State Modifiers</h4>
+          <div class="code-block">
+            <pre><span class="cm">&lt;!-- hover, focus, active states --&gt;</span>
+<span class="kw">&lt;button</span> <span class="prop">class</span>=<span class="str">"bg-blue-500 hover:bg-blue-700 focus:ring-2 active:scale-95"</span><span class="kw">&gt;</span>
+  Click me
+<span class="kw">&lt;/button&gt;</span>
+
+<span class="cm">&lt;!-- dark mode --&gt;</span>
+<span class="kw">&lt;div</span> <span class="prop">class</span>=<span class="str">"bg-white dark:bg-gray-800 text-black dark:text-white"</span><span class="kw">&gt;</span>...<span class="kw">&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     LECTURE 7 — ADVANCED TAILWIND
+═════════════════════════════════════ -->
+      <section class="section" id="tw-adv">
+        <div class="section-header">
+          <span class="lec-badge t">LECTURE 7</span>
+          <h2>Advanced Tailwind &amp; Customization</h2>
+        </div>
+
+        <div class="content-grid">
+          <div class="subsection">
+            <h4><span class="sub-num">01</span>tailwind.config.js</h4>
+            <div class="code-block">
+              <pre><span class="cm">// Extend the default theme</span>
+<span class="fn">module</span>.exports = {
+  <span class="prop">theme</span>: {
+    <span class="prop">extend</span>: {
+      <span class="prop">colors</span>: {
+        <span class="prop">brand</span>: <span class="str">'#ff3c5f'</span>,
+        <span class="prop">'brand-dark'</span>: <span class="str">'#cc1f40'</span>,
+      },
+      <span class="prop">fontFamily</span>: {
+        <span class="prop">custom</span>: [<span class="str">'Unbounded'</span>, <span class="str">'sans-serif'</span>],
+      },
+      <span class="prop">spacing</span>: { <span class="str">'18'</span>: <span class="str">'4.5rem'</span> }
+    }
+  }
+}</pre>
+            </div>
+          </div>
+          <div class="subsection">
+            <h4>
+              <span class="sub-num">02</span>@apply — Component Abstraction
+            </h4>
+            <div class="code-block">
+              <pre><span class="cm">/* In your CSS file */</span>
+<span class="prop">.btn-primary</span> {
+  <span class="kw">@apply</span> px-6 py-3 bg-blue-600
+         text-white font-bold rounded-lg
+         hover:bg-blue-700 transition-all;
+}
+
+<span class="cm">/* Now use it simply in HTML */</span>
+<span class="kw">&lt;button</span> <span class="prop">class</span>=<span class="str">"btn-primary"</span><span class="kw">&gt;</span>Submit<span class="kw">&lt;/button&gt;</span></pre>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">03</span>Gradients</h4>
+          <div class="code-block">
+            <pre><span class="kw">&lt;div</span> <span class="prop">class</span>=<span class="str">"bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"</span><span class="kw">&gt;
+</span>  Gradient background
+<span class="kw">&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- Directions: to-r to-l to-t to-b to-tr to-br --&gt;</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">04</span>Arbitrary Values</h4>
+          <div class="code-block">
+            <pre><span class="cm">&lt;!-- Use any value with square brackets --&gt;</span>
+<span class="kw">&lt;div</span> <span class="prop">class</span>=<span class="str">"w-[420px] h-[3px] bg-[#ff3c5f] top-[17px]"</span><span class="kw">&gt;&lt;/div&gt;</span></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     JS — DATA TYPES & NESTING
+═════════════════════════════════════ -->
+      <section class="section" id="js-types">
+        <div class="section-header">
+          <span class="lec-badge g">JAVASCRIPT</span>
+          <h2>JS Data Types &amp; Nesting Explained</h2>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">01</span>Primitive Types</h4>
+          <div class="content-grid three">
+            <div class="card">
+              <h3 class="green">Primitive</h3>
+              <table class="ref-table">
+                <tr>
+                  <td class="green">string</td>
+                  <td>"hello" / 'hi'</td>
+                </tr>
+                <tr>
+                  <td class="green">number</td>
+                  <td>42 / 3.14 / NaN</td>
+                </tr>
+                <tr>
+                  <td class="green">boolean</td>
+                  <td>true / false</td>
+                </tr>
+                <tr>
+                  <td class="green">null</td>
+                  <td>intentional empty</td>
+                </tr>
+                <tr>
+                  <td class="green">undefined</td>
+                  <td>not yet assigned</td>
+                </tr>
+                <tr>
+                  <td class="green">bigint</td>
+                  <td>9007199254740991n</td>
+                </tr>
+                <tr>
+                  <td class="green">symbol</td>
+                  <td>unique id (advanced)</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card">
+              <h3 class="green">Reference Types</h3>
+              <table class="ref-table">
+                <tr>
+                  <td class="green">Object</td>
+                  <td>{ key: value }</td>
+                </tr>
+                <tr>
+                  <td class="green">Array</td>
+                  <td>[1, 2, 3]</td>
+                </tr>
+                <tr>
+                  <td class="green">Function</td>
+                  <td>() => {}</td>
+                </tr>
+                <tr>
+                  <td class="green">Date</td>
+                  <td>new Date()</td>
+                </tr>
+                <tr>
+                  <td class="green">Map</td>
+                  <td>new Map()</td>
+                </tr>
+                <tr>
+                  <td class="green">Set</td>
+                  <td>new Set()</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card">
+              <h3 class="green">typeof Results</h3>
+              <table class="ref-table">
+                <tr>
+                  <td class="green">typeof "hi"</td>
+                  <td>"string"</td>
+                </tr>
+                <tr>
+                  <td class="green">typeof 42</td>
+                  <td>"number"</td>
+                </tr>
+                <tr>
+                  <td class="green">typeof true</td>
+                  <td>"boolean"</td>
+                </tr>
+                <tr>
+                  <td class="green">typeof null</td>
+                  <td>"object" ⚠️</td>
+                </tr>
+                <tr>
+                  <td class="green">typeof []</td>
+                  <td>"object"</td>
+                </tr>
+                <tr>
+                  <td class="green">typeof {}</td>
+                  <td>"object"</td>
+                </tr>
+                <tr>
+                  <td class="green">typeof fn</td>
+                  <td>"function"</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">02</span>Objects — Creating &amp; Accessing
+          </h4>
+          <div class="code-block">
+            <pre><span class="cm">// Creating an object</span>
+<span class="kw">const</span> <span class="prop">person</span> = {
+  <span class="prop">name</span>: <span class="str">"Ayesha"</span>,
+  <span class="prop">age</span>: <span class="num">25</span>,
+  <span class="prop">active</span>: <span class="kw">true</span>,
+};
+
+<span class="cm">// Dot notation (preferred)</span>
+person.<span class="prop">name</span>;         <span class="cm">// "Ayesha"</span>
+
+<span class="cm">// Bracket notation (use for dynamic keys)</span>
+person[<span class="str">"age"</span>];       <span class="cm">// 25</span>
+<span class="kw">const</span> key = <span class="str">"active"</span>;
+person[key];         <span class="cm">// true</span>
+
+<span class="cm">// Adding / modifying</span>
+person.<span class="prop">city</span> = <span class="str">"Lahore"</span>;
+person.<span class="prop">age</span> = <span class="num">26</span>;
+
+<span class="cm">// Deleting</span>
+<span class="kw">delete</span> person.<span class="prop">city</span>;</pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">03</span>Arrays — Creating &amp; Manipulating
+          </h4>
+          <div class="code-block">
+            <pre><span class="kw">const</span> <span class="prop">fruits</span> = [<span class="str">"apple"</span>, <span class="str">"banana"</span>, <span class="str">"mango"</span>];
+
+fruits[<span class="num">0</span>];            <span class="cm">// "apple"  (0-indexed)</span>
+fruits.<span class="prop">length</span>;        <span class="cm">// 3</span>
+fruits.<span class="fn">push</span>(<span class="str">"grape"</span>);  <span class="cm">// add to END → ["apple","banana","mango","grape"]</span>
+fruits.<span class="fn">pop</span>();         <span class="cm">// remove from END → "grape"</span>
+fruits.<span class="fn">unshift</span>(<span class="str">"kiwi"</span>);<span class="cm">// add to START</span>
+fruits.<span class="fn">shift</span>();       <span class="cm">// remove from START</span>
+fruits.<span class="fn">includes</span>(<span class="str">"mango"</span>); <span class="cm">// true</span>
+fruits.<span class="fn">indexOf</span>(<span class="str">"banana"</span>); <span class="cm">// 1</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">04</span>Nesting — Objects in Arrays in
+            Objects
+          </h4>
+          <div class="code-block">
+            <pre><span class="cm">// Deeply nested structure</span>
+<span class="kw">const</span> <span class="prop">company</span> = {
+  <span class="prop">name</span>: <span class="str">"TechCorp"</span>,
+  <span class="prop">departments</span>: [              <span class="cm">// array of objects</span>
+    {
+      <span class="prop">dept</span>: <span class="str">"Engineering"</span>,
+      <span class="prop">employees</span>: [          <span class="cm">// nested array</span>
+        { <span class="prop">name</span>: <span class="str">"Bilal"</span>, <span class="prop">salary</span>: <span class="num">220000</span> },
+        { <span class="prop">name</span>: <span class="str">"Ayesha"</span>, <span class="prop">salary</span>: <span class="num">180000</span> },
+      ]
+    }
+  ]
+};
+
+<span class="cm">// Accessing nested data</span>
+company.<span class="prop">name</span>;                              <span class="cm">// "TechCorp"</span>
+company.<span class="prop">departments</span>[<span class="num">0</span>].<span class="prop">dept</span>;             <span class="cm">// "Engineering"</span>
+company.<span class="prop">departments</span>[<span class="num">0</span>].<span class="prop">employees</span>[<span class="num">1</span>].<span class="prop">name</span>; <span class="cm">// "Ayesha"</span></pre>
+          </div>
+          <div class="tip-banner">
+            <strong>Rule of thumb:</strong> <code>[]</code> means "give me index
+            N of an array", <code>.</code> means "give me property X of an
+            object". Chain them to drill down any depth.
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     JS — ARROW FUNCTIONS, MAP & FILTER
+═════════════════════════════════════ -->
+      <section class="section" id="js-arrow">
+        <div class="section-header">
+          <span class="lec-badge g">JAVASCRIPT</span>
+          <h2>Arrow Functions, Map &amp; Filter ⭐ EXAM FOCUS</h2>
+        </div>
+
+        <div class="important-banner">
+          <div class="ib-label">⚠ Exam important</div>
+          <p>
+            Arrow functions, map, filter, and reduce are explicitly in the
+            assignment AND called out as exam topics. Know these cold.
+          </p>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">01</span>Arrow Functions</h4>
+          <div class="code-block">
+            <pre><span class="cm">// Regular function</span>
+<span class="kw">function</span> <span class="fn">add</span>(a, b) { <span class="kw">return</span> a + b; }
+
+<span class="cm">// Arrow function — equivalent</span>
+<span class="kw">const</span> <span class="fn">add</span> = (a, b) <span class="op">=&gt;</span> a + b;        <span class="cm">// implicit return (no {})  </span>
+
+<span class="cm">// With body (explicit return needed)</span>
+<span class="kw">const</span> <span class="fn">greet</span> = (name) <span class="op">=&gt;</span> {
+  <span class="kw">const</span> msg = <span class="str">`Hello, ${name}!`</span>;
+  <span class="kw">return</span> msg;
+};
+
+<span class="cm">// Return object literal — wrap in ()</span>
+<span class="kw">const</span> <span class="fn">makeCard</span> = (name) <span class="op">=&gt;</span> ({ <span class="prop">displayName</span>: name.<span class="fn">toUpperCase</span>() });
+
+<span class="cm">// Default parameter</span>
+<span class="kw">const</span> <span class="fn">sayHi</span> = (name = <span class="str">"Guest"</span>) <span class="op">=&gt;</span> <span class="str">`Hi ${name}`</span>;
+sayHi();          <span class="cm">// "Hi Guest"</span>
+sayHi(<span class="str">"Bilal"</span>);  <span class="cm">// "Hi Bilal"</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">02</span>map() — Transform Every Element
+          </h4>
+          <div class="tip-banner">
+            <strong>map</strong> takes an array, applies a function to EVERY
+            item, and returns a <strong>new array of the same length</strong>.
+            Never mutates original.
+          </div>
+          <div class="code-block">
+            <pre><span class="kw">const</span> numbers = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>];
+
+<span class="cm">// Double every number</span>
+<span class="kw">const</span> doubled = numbers.<span class="fn">map</span>(n <span class="op">=&gt;</span> n * <span class="num">2</span>);
+<span class="cm">// [2, 4, 6, 8]</span>
+
+<span class="cm">// Real-world: transform objects</span>
+<span class="kw">const</span> employees = [
+  { <span class="prop">name</span>: <span class="str">"Ayesha"</span>, <span class="prop">salary</span>: <span class="num">180000</span> },
+  { <span class="prop">name</span>: <span class="str">"Bilal"</span>, <span class="prop">salary</span>: <span class="num">220000</span> },
+];
+
+<span class="kw">const</span> cards = employees.<span class="fn">map</span>(emp <span class="op">=&gt;</span> ({
+  <span class="prop">displayName</span>: emp.name.<span class="fn">toUpperCase</span>(),
+  <span class="prop">formattedSalary</span>: <span class="str">`Rs. ${emp.salary.<span class="fn">toLocaleString</span>()}`</span>,
+}));
+<span class="cm">// [{displayName:"AYESHA", ...}, {displayName:"BILAL", ...}]</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">03</span>filter() — Keep Only Matching Items
+          </h4>
+          <div class="tip-banner">
+            <strong>filter</strong> returns a
+            <strong>new array</strong> containing only items where the callback
+            returns <code>true</code>. Length can be shorter.
+          </div>
+          <div class="code-block">
+            <pre><span class="kw">const</span> numbers = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>];
+
+<span class="cm">// Keep only even numbers</span>
+<span class="kw">const</span> evens = numbers.<span class="fn">filter</span>(n <span class="op">=&gt;</span> n % <span class="num">2</span> === <span class="num">0</span>);
+<span class="cm">// [2, 4, 6]</span>
+
+<span class="cm">// Real-world: filter employees</span>
+<span class="kw">const</span> engineers = employees.<span class="fn">filter</span>(emp <span class="op">=&gt;</span> emp.department === <span class="str">"Engineering"</span>);
+<span class="kw">const</span> highPerformers = employees.<span class="fn">filter</span>(emp <span class="op">=&gt;</span> emp.rating >= <span class="num">8</span>);
+<span class="kw">const</span> activeOnly = employees.<span class="fn">filter</span>(emp <span class="op">=&gt;</span> emp.active === <span class="kw">true</span>);
+
+<span class="cm">// Chaining: active engineers</span>
+<span class="kw">const</span> activeEngineers = employees
+  .<span class="fn">filter</span>(e <span class="op">=&gt;</span> e.active <span class="op">&amp;&amp;</span> e.department === <span class="str">"Engineering"</span>)
+  .<span class="fn">map</span>(e <span class="op">=&gt;</span> e.name);
+<span class="cm">// ["Ayesha Khan", "Bilal Ahmad"]</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">04</span>reduce() — Combine Into Single Value
+          </h4>
+          <div class="tip-banner">
+            <strong>reduce</strong> processes every item and accumulates a
+            single result (number, string, object, etc.).
+          </div>
+          <div class="code-block">
+            <pre><span class="cm">// Signature: array.reduce((accumulator, currentItem) => ..., initialValue)</span>
+
+<span class="cm">// Sum all salaries</span>
+<span class="kw">const</span> totalPayroll = employees.<span class="fn">reduce</span>((sum, emp) <span class="op">=&gt;</span> sum + emp.salary, <span class="num">0</span>);
+
+<span class="cm">// Average rating</span>
+<span class="kw">const</span> avgRating = (employees.<span class="fn">reduce</span>((sum, emp) <span class="op">=&gt;</span> sum + emp.rating, <span class="num">0</span>)
+  / employees.length).<span class="fn">toFixed</span>(<span class="num">2</span>);
+
+<span class="cm">// Group by department (object accumulator)</span>
+<span class="kw">const</span> byDept = employees.<span class="fn">reduce</span>((acc, emp) <span class="op">=&gt;</span> {
+  acc[emp.department] = (acc[emp.department] || <span class="num">0</span>) + <span class="num">1</span>;
+  <span class="kw">return</span> acc;
+}, {});
+<span class="cm">// { Engineering: 3, Marketing: 2, Sales: 2, Design: 1 }</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">05</span>find, some, every, sort</h4>
+          <div class="code-block">
+            <pre><span class="cm">// find — returns FIRST match (or undefined)</span>
+<span class="kw">const</span> zara = employees.<span class="fn">find</span>(e <span class="op">=&gt;</span> e.name === <span class="str">"Zara Iqbal"</span>);
+
+<span class="cm">// some — true if ANY match</span>
+<span class="kw">const</span> hasPerfect = employees.<span class="fn">some</span>(e <span class="op">=&gt;</span> e.rating === <span class="num">10</span>); <span class="cm">// true</span>
+
+<span class="cm">// every — true if ALL match</span>
+<span class="kw">const</span> allValid = employees.<span class="fn">every</span>(e <span class="op">=&gt;</span> e.salary > <span class="num">0</span>);    <span class="cm">// true</span>
+
+<span class="cm">// sort — ALWAYS sort a COPY with [...arr]</span>
+<span class="kw">const</span> bySalary = [...employees].<span class="fn">sort</span>((a, b) <span class="op">=&gt;</span> b.salary - a.salary); <span class="cm">// desc</span>
+<span class="kw">const</span> byName = [...employees].<span class="fn">sort</span>((a, b) <span class="op">=&gt;</span> a.name.<span class="fn">localeCompare</span>(b.name));</pre>
+          </div>
+          <div class="warn-banner">
+            <strong>⚠ Never sort the original array!</strong> Always do
+            <code>[...arr].sort()</code>. And always pass a comparator for
+            numbers — otherwise JS sorts as strings!
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     JS — SPREAD, REST, DESTRUCTURING
+═════════════════════════════════════ -->
+      <section class="section" id="js-es6">
+        <div class="section-header">
+          <span class="lec-badge g">JAVASCRIPT</span>
+          <h2>Spread, Rest, Destructuring, Deep vs Shallow Copy</h2>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">01</span>Spread Operator <code>...</code>
+          </h4>
+          <div class="tip-banner">
+            <strong>Spread</strong> "unpacks" an array or object into individual
+            elements.
+          </div>
+          <div class="code-block">
+            <pre><span class="cm">// ── Arrays ──</span>
+<span class="kw">const</span> a = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>];
+<span class="kw">const</span> b = [<span class="num">4</span>, <span class="num">5</span>];
+<span class="kw">const</span> combined = [...a, ...b];       <span class="cm">// [1,2,3,4,5]</span>
+<span class="kw">const</span> copy = [...a];                  <span class="cm">// shallow copy of a</span>
+
+<span class="cm">// ── Objects ──</span>
+<span class="kw">const</span> defaults = { <span class="prop">color</span>: <span class="str">"blue"</span>, <span class="prop">size</span>: <span class="str">"md"</span> };
+<span class="kw">const</span> custom = { ...defaults, <span class="prop">color</span>: <span class="str">"red"</span> }; <span class="cm">// override color</span>
+<span class="cm">// { color: "red", size: "md" }</span>
+
+<span class="cm">// ── In function calls ──</span>
+Math.<span class="fn">max</span>(...[<span class="num">5</span>, <span class="num">2</span>, <span class="num">9</span>, <span class="num">1</span>]);          <span class="cm">// 9</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>
+            <span class="sub-num">02</span>Rest Parameters <code>...args</code>
+          </h4>
+          <div class="tip-banner">
+            <strong>Rest</strong> collects "the rest of the arguments" into an
+            array. Goes in the function signature.
+          </div>
+          <div class="code-block">
+            <pre><span class="cm">// Collects all arguments into 'lines' array</span>
+<span class="kw">const</span> <span class="fn">logSection</span> = (title, ...lines) <span class="op">=&gt;</span> {
+  console.<span class="fn">log</span>(title);
+  lines.<span class="fn">forEach</span>(line <span class="op">=&gt;</span> console.<span class="fn">log</span>(line));
+};
+
+<span class="fn">logSection</span>(<span class="str">"DEMO"</span>, <span class="str">"line 1"</span>, <span class="str">"line 2"</span>, <span class="str">"line 3"</span>);
+<span class="cm">// title = "DEMO"</span>
+<span class="cm">// lines = ["line 1", "line 2", "line 3"]</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">03</span>Destructuring</h4>
+          <div class="content-grid">
+            <div>
+              <div class="code-block">
+                <span class="code-label">Object Destructuring</span>
+                <pre><span class="kw">const</span> emp = { <span class="prop">name</span>: <span class="str">"Ayesha"</span>, <span class="prop">dept</span>: <span class="str">"Eng"</span>, <span class="prop">salary</span>: <span class="num">180000</span> };
+
+<span class="cm">// Extract into variables</span>
+<span class="kw">const</span> { name, dept } = emp;
+<span class="cm">// name = "Ayesha", dept = "Eng"</span>
+
+<span class="cm">// Rename while destructuring</span>
+<span class="kw">const</span> { name: empName, salary: pay } = emp;
+<span class="cm">// empName = "Ayesha", pay = 180000</span>
+
+<span class="cm">// Default values</span>
+<span class="kw">const</span> { city = <span class="str">"Lahore"</span> } = emp;
+<span class="cm">// city = "Lahore" (since emp.city is undefined)</span></pre>
+              </div>
+            </div>
+            <div>
+              <div class="code-block">
+                <span class="code-label">Array Destructuring</span>
+                <pre><span class="kw">const</span> colors = [<span class="str">"red"</span>, <span class="str">"green"</span>, <span class="str">"blue"</span>];
+
+<span class="kw">const</span> [first, second] = colors;
+<span class="cm">// first = "red", second = "green"</span>
+
+<span class="cm">// Skip elements with comma</span>
+<span class="kw">const</span> [,, third] = colors;
+<span class="cm">// third = "blue"</span>
+
+<span class="cm">// Rest in arrays</span>
+<span class="kw">const</span> [head, ...tail] = colors;
+<span class="cm">// head = "red", tail = ["green","blue"]</span>
+
+<span class="cm">// Swap variables</span>
+<span class="kw">let</span> x = <span class="num">1</span>, y = <span class="num">2</span>;
+[x, y] = [y, x]; <span class="cm">// x=2, y=1</span></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4><span class="sub-num">04</span>Deep vs Shallow Copy</h4>
+          <div class="warn-banner">
+            <strong>⚠ Critical concept:</strong> Objects and arrays are
+            reference types. Assigning them does NOT copy — it shares the
+            reference!
+          </div>
+          <div class="code-block">
+            <pre><span class="cm">// ── SHALLOW COPY ──</span>
+<span class="cm">// Works fine for flat (non-nested) objects</span>
+<span class="kw">const</span> original = { <span class="prop">name</span>: <span class="str">"Ayesha"</span>, <span class="prop">score</span>: <span class="num">9</span> };
+<span class="kw">const</span> shallowCopy = { ...original };      <span class="cm">// or Object.assign({}, original)</span>
+shallowCopy.name = <span class="str">"Bilal"</span>;
+original.name;  <span class="cm">// still "Ayesha" ✓</span>
+
+<span class="cm">// ── SHALLOW COPY PROBLEM ──</span>
+<span class="cm">// Nested objects still share reference!</span>
+<span class="kw">const</span> a = { <span class="prop">info</span>: { <span class="prop">city</span>: <span class="str">"Lahore"</span> } };
+<span class="kw">const</span> b = { ...a };         <span class="cm">// shallow copy</span>
+b.info.city = <span class="str">"Karachi"</span>;
+a.info.city;                 <span class="cm">// "Karachi" ← mutated! ✗</span>
+
+<span class="cm">// ── DEEP COPY ──</span>
+<span class="cm">// JSON trick (simple, loses functions/Dates)</span>
+<span class="kw">const</span> deepCopy = <span class="fn">JSON</span>.<span class="fn">parse</span>(<span class="fn">JSON</span>.<span class="fn">stringify</span>(a));
+deepCopy.info.city = <span class="str">"Islamabad"</span>;
+a.info.city;   <span class="cm">// still "Karachi" ✓ — original untouched</span>
+
+<span class="cm">// Modern: structuredClone (best option)</span>
+<span class="kw">const</span> deepCopy2 = <span class="fn">structuredClone</span>(a);</pre>
+          </div>
+          <div class="content-grid">
+            <div class="card">
+              <h3 class="green">Shallow Copy Methods</h3>
+              <ul class="styled">
+                <li><code>{...obj}</code> — object spread</li>
+                <li><code>[...arr]</code> — array spread</li>
+                <li><code>Object.assign({}, obj)</code></li>
+                <li><code>arr.slice()</code></li>
+                <li><strong>Good for:</strong> flat structures (no nesting)</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3 class="green">Deep Copy Methods</h3>
+              <ul class="styled">
+                <li><code>structuredClone(obj)</code> — modern &amp; best</li>
+                <li>
+                  <code>JSON.parse(JSON.stringify(obj))</code> — simple but
+                  loses functions/Dates
+                </li>
+                <li>Lodash <code>_.cloneDeep(obj)</code> — library</li>
+                <li><strong>Good for:</strong> nested objects/arrays</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     ASSIGNMENT
+═════════════════════════════════════ -->
+      <section class="section" id="assign">
+        <div class="section-header">
+          <span class="lec-badge y">ASSIGNMENT</span>
+          <h2>Employee Profile Generator — Overview</h2>
+        </div>
+
+        <div class="assignment-section">
+          <h3>📋 What You're Building</h3>
+          <p
+            style="font-size: 0.9rem; color: var(--muted); margin-bottom: 12px"
+          >
+            A <code>profiles.js</code> file run with
+            <code>node profiles.js</code>. Every section must match the Expected
+            Output exactly.
+          </p>
+          <table class="ref-table">
+            <thead>
+              <tr>
+                <th>Section</th>
+                <th>Topic</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tr>
+              <td class="blue">1</td>
+              <td>Closure Factory — ID Generator</td>
+              <td>Part of 25</td>
+            </tr>
+            <tr>
+              <td class="blue">2</td>
+              <td>Pure Formatting Functions</td>
+              <td>Part of 25</td>
+            </tr>
+            <tr>
+              <td class="blue">3</td>
+              <td>Employee Data (paste as-is)</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td class="blue">4</td>
+              <td>forEach — Directory</td>
+              <td>Part of 25</td>
+            </tr>
+            <tr>
+              <td class="blue">5</td>
+              <td>map — Display Cards</td>
+              <td>Part of 25</td>
+            </tr>
+            <tr>
+              <td class="blue">6</td>
+              <td>filter — 3 Views</td>
+              <td>Part of 20</td>
+            </tr>
+            <tr>
+              <td class="blue">7</td>
+              <td>find — Lookup by Name</td>
+              <td>Part of 20</td>
+            </tr>
+            <tr>
+              <td class="blue">8</td>
+              <td>some / every — Boolean Checks</td>
+              <td>Part of 20</td>
+            </tr>
+            <tr>
+              <td class="blue">9</td>
+              <td>reduce — Aggregates</td>
+              <td>Part of 15</td>
+            </tr>
+            <tr>
+              <td class="blue">10</td>
+              <td>sort — 2 Criteria (on copies!)</td>
+              <td>Part of 15</td>
+            </tr>
+            <tr>
+              <td class="blue">11</td>
+              <td>Chained Pipelines</td>
+              <td>Part of 15</td>
+            </tr>
+            <tr>
+              <td class="blue">12</td>
+              <td>Final Summary</td>
+              <td>—</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="warn-banner">
+          <strong>Rules:</strong> Only <code>const</code> and <code>let</code> —
+          never <code>var</code>. All sort calls must use
+          <code>[...arr].sort()</code>. All numeric sorts need a comparator.
+        </div>
+      </section>
+
+      <!-- FULL SOLUTION -->
+      <section class="section" id="assign-sol">
+        <div class="section-header">
+          <span class="lec-badge y">SOLUTION</span>
+          <h2>Complete profiles.js Solution</h2>
+        </div>
+
+        <div class="code-block">
+          <span class="code-label">profiles.js — full working solution</span>
+          <pre><span class="cm">// === Utility: Section Logger (uses REST parameters) ===</span>
+<span class="kw">const</span> <span class="fn">logSection</span> = (title, ...lines) <span class="op">=&gt;</span> {
+  console.<span class="fn">log</span>(<span class="str">"\n"</span> + <span class="str">"="</span>.<span class="fn">repeat</span>(<span class="num">60</span>));
+  console.<span class="fn">log</span>(title);
+  console.<span class="fn">log</span>(<span class="str">"="</span>.<span class="fn">repeat</span>(<span class="num">60</span>));
+  lines.<span class="fn">forEach</span>((line) <span class="op">=&gt;</span> console.<span class="fn">log</span>(line));
+};
+
+<span class="cm">// === Closure Factory: ID Generator ===</span>
+<span class="kw">function</span> <span class="fn">createIdGenerator</span>(prefix) {
+  <span class="kw">let</span> nextId = <span class="num">1</span>;
+  <span class="kw">return</span> (name) <span class="op">=&gt;</span> {
+    <span class="kw">const</span> id = <span class="str">`${prefix}-${String(nextId).<span class="fn">padStart</span>(<span class="num">4</span>, <span class="str">"0"</span>)}`</span>;
+    nextId++;
+    <span class="kw">return</span> { id, name };
+  };
+}
+
+<span class="kw">const</span> generateEngId = <span class="fn">createIdGenerator</span>(<span class="str">"ENG"</span>);
+<span class="kw">const</span> generateMktId = <span class="fn">createIdGenerator</span>(<span class="str">"MKT"</span>);
+<span class="kw">const</span> generateSalesId = <span class="fn">createIdGenerator</span>(<span class="str">"SAL"</span>);
+
+<span class="fn">logSection</span>(
+  <span class="str">"CLOSURE FACTORY DEMO"</span>,
+  <span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="fn">generateEngId</span>(<span class="str">"Ayesha Khan"</span>)),
+  <span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="fn">generateEngId</span>(<span class="str">"Bilal Ahmad"</span>)),
+  <span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="fn">generateMktId</span>(<span class="str">"Sana Tariq"</span>)),
+  <span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="fn">generateMktId</span>(<span class="str">"Hamza Malik"</span>)),
+  <span class="fn">JSON</span>.<span class="fn">stringify</span>(<span class="fn">generateSalesId</span>(<span class="str">"Zara Iqbal"</span>))
+);
+
+<span class="cm">// === Pure Formatting Functions ===</span>
+<span class="kw">const</span> <span class="fn">formatFullName</span> = (firstName, lastName = <span class="str">""</span>) <span class="op">=&gt;</span>
+  lastName ? <span class="str">`${firstName} ${lastName}`</span> : firstName;
+
+<span class="kw">const</span> <span class="fn">formatSalary</span> = (amount) <span class="op">=&gt;</span> <span class="str">`Rs. ${amount.<span class="fn">toLocaleString</span>(<span class="str">"en-PK"</span>)}`</span>;
+
+<span class="kw">const</span> <span class="fn">formatRating</span> = (rating) <span class="op">=&gt;</span>
+  <span class="str">"★"</span>.<span class="fn">repeat</span>(rating) + <span class="str">"☆"</span>.<span class="fn">repeat</span>(<span class="num">10</span> - rating) + <span class="str">` ${rating}/10`</span>;
+
+<span class="fn">logSection</span>(
+  <span class="str">"PURE FUNCTION DEMO"</span>,
+  <span class="str">`formatFullName("Ali", "Raza") => ${<span class="fn">formatFullName</span>(<span class="str">"Ali"</span>, <span class="str">"Raza"</span>)}`</span>,
+  <span class="str">`formatFullName("Madonna") => ${<span class="fn">formatFullName</span>(<span class="str">"Madonna"</span>)}`</span>,
+  <span class="str">`formatSalary(95000) => ${<span class="fn">formatSalary</span>(<span class="num">95000</span>)}`</span>,
+  <span class="str">`formatRating(8) => ${<span class="fn">formatRating</span>(<span class="num">8</span>)}`</span>
+);
+
+<span class="cm">// === Employee Data ===</span>
+<span class="kw">const</span> employees = [
+  { <span class="prop">name</span>: <span class="str">"Ayesha Khan"</span>, <span class="prop">department</span>: <span class="str">"Engineering"</span>, <span class="prop">salary</span>: <span class="num">180000</span>, <span class="prop">rating</span>: <span class="num">9</span>,  <span class="prop">active</span>: <span class="kw">true</span>,  <span class="prop">joinDate</span>: <span class="str">"2022-03-15"</span> },
+  { <span class="prop">name</span>: <span class="str">"Bilal Ahmad"</span>, <span class="prop">department</span>: <span class="str">"Engineering"</span>, <span class="prop">salary</span>: <span class="num">220000</span>, <span class="prop">rating</span>: <span class="num">10</span>, <span class="prop">active</span>: <span class="kw">true</span>,  <span class="prop">joinDate</span>: <span class="str">"2021-07-01"</span> },
+  { <span class="prop">name</span>: <span class="str">"Sana Tariq"</span>, <span class="prop">department</span>: <span class="str">"Marketing"</span>,   <span class="prop">salary</span>: <span class="num">120000</span>, <span class="prop">rating</span>: <span class="num">7</span>,  <span class="prop">active</span>: <span class="kw">true</span>,  <span class="prop">joinDate</span>: <span class="str">"2023-01-20"</span> },
+  { <span class="prop">name</span>: <span class="str">"Hamza Malik"</span>, <span class="prop">department</span>: <span class="str">"Marketing"</span>,   <span class="prop">salary</span>: <span class="num">95000</span>,  <span class="prop">rating</span>: <span class="num">6</span>,  <span class="prop">active</span>: <span class="kw">false</span>, <span class="prop">joinDate</span>: <span class="str">"2024-05-10"</span> },
+  { <span class="prop">name</span>: <span class="str">"Zara Iqbal"</span>,  <span class="prop">department</span>: <span class="str">"Sales"</span>,       <span class="prop">salary</span>: <span class="num">140000</span>, <span class="prop">rating</span>: <span class="num">8</span>,  <span class="prop">active</span>: <span class="kw">true</span>,  <span class="prop">joinDate</span>: <span class="str">"2022-11-05"</span> },
+  { <span class="prop">name</span>: <span class="str">"Usman Raza"</span>,  <span class="prop">department</span>: <span class="str">"Sales"</span>,       <span class="prop">salary</span>: <span class="num">110000</span>, <span class="prop">rating</span>: <span class="num">5</span>,  <span class="prop">active</span>: <span class="kw">true</span>,  <span class="prop">joinDate</span>: <span class="str">"2024-02-18"</span> },
+  { <span class="prop">name</span>: <span class="str">"Fatima Noor"</span>, <span class="prop">department</span>: <span class="str">"Design"</span>,      <span class="prop">salary</span>: <span class="num">160000</span>, <span class="prop">rating</span>: <span class="num">9</span>,  <span class="prop">active</span>: <span class="kw">true</span>,  <span class="prop">joinDate</span>: <span class="str">"2023-06-30"</span> },
+  { <span class="prop">name</span>: <span class="str">"Kamran Shahid"</span>,<span class="prop">department</span>: <span class="str">"Engineering"</span>, <span class="prop">salary</span>: <span class="num">155000</span>, <span class="prop">rating</span>: <span class="num">4</span>,  <span class="prop">active</span>: <span class="kw">false</span>, <span class="prop">joinDate</span>: <span class="str">"2020-09-12"</span> },
+];
+
+<span class="cm">// === forEach: Employee Directory ===</span>
+<span class="fn">logSection</span>(<span class="str">"EMPLOYEE DIRECTORY (forEach)"</span>);
+employees.<span class="fn">forEach</span>((emp, index) <span class="op">=&gt;</span> {
+  <span class="kw">const</span> num = String(index + <span class="num">1</span>).<span class="fn">padStart</span>(<span class="num">2</span>, <span class="str">"0"</span>);
+  <span class="kw">const</span> status = emp.active ? <span class="str">"Active  "</span> : <span class="str">"Inactive"</span>;
+  console.<span class="fn">log</span>(<span class="str">`${num}. ${emp.name.<span class="fn">padEnd</span>(<span class="num">18</span>)} | ${emp.department.<span class="fn">padEnd</span>(<span class="num">12</span>)} | ${status} | ${<span class="fn">formatSalary</span>(emp.salary)}`</span>);
+});
+
+<span class="cm">// === map: Display Cards ===</span>
+<span class="kw">const</span> displayCards = employees.<span class="fn">map</span>((emp) <span class="op">=&gt;</span> ({
+  <span class="prop">displayName</span>: emp.name.<span class="fn">toUpperCase</span>(),
+  <span class="prop">department</span>: emp.department,
+  <span class="prop">salary</span>: <span class="fn">formatSalary</span>(emp.salary),
+  <span class="prop">rating</span>: <span class="fn">formatRating</span>(emp.rating),
+  <span class="prop">status</span>: emp.active ? <span class="str">"Active"</span> : <span class="str">"Inactive"</span>,
+}));
+<span class="fn">logSection</span>(<span class="str">"DISPLAY CARDS (map)"</span>);
+displayCards.<span class="fn">forEach</span>((card) <span class="op">=&gt;</span> console.<span class="fn">log</span>(card));
+
+<span class="cm">// === filter: Three Filtered Views ===</span>
+<span class="kw">const</span> engineers      = employees.<span class="fn">filter</span>(e <span class="op">=&gt;</span> e.department === <span class="str">"Engineering"</span>);
+<span class="kw">const</span> highPerformers = employees.<span class="fn">filter</span>(e <span class="op">=&gt;</span> e.rating >= <span class="num">8</span>);
+<span class="kw">const</span> activeEmployees = employees.<span class="fn">filter</span>(e <span class="op">=&gt;</span> e.active === <span class="kw">true</span>);
+
+<span class="fn">logSection</span>(
+  <span class="str">"FILTERED VIEWS (filter)"</span>,
+  <span class="str">`Engineers (${engineers.length}): ${engineers.<span class="fn">map</span>(e <span class="op">=&gt;</span> e.name).<span class="fn">join</span>(<span class="str">", "</span>)}`</span>,
+  <span class="str">`High Performers (${highPerformers.length}): ${highPerformers.<span class="fn">map</span>(e <span class="op">=&gt;</span> e.name).<span class="fn">join</span>(<span class="str">", "</span>)}`</span>,
+  <span class="str">`Active (${activeEmployees.length}): ${activeEmployees.<span class="fn">map</span>(e <span class="op">=&gt;</span> e.name).<span class="fn">join</span>(<span class="str">", "</span>)}`</span>
+);
+
+<span class="cm">// === find: Lookup by Name ===</span>
+<span class="kw">const</span> lookupName = <span class="str">"Zara Iqbal"</span>;
+<span class="kw">const</span> foundEmployee = employees.<span class="fn">find</span>(e <span class="op">=&gt;</span> e.name === lookupName);
+<span class="fn">logSection</span>(
+  <span class="str">"LOOKUP BY NAME (find)"</span>,
+  foundEmployee
+    ? <span class="str">`Found: ${foundEmployee.name} — ${foundEmployee.department}, ${<span class="fn">formatSalary</span>(foundEmployee.salary)}`</span>
+    : <span class="str">`No employee named "${lookupName}" was found.`</span>
+);
+
+<span class="cm">// === some / every: Boolean Checks ===</span>
+<span class="kw">const</span> hasPerfectScorer = employees.<span class="fn">some</span>(e <span class="op">=&gt;</span> e.rating === <span class="num">10</span>);
+<span class="kw">const</span> allSalariesValid = employees.<span class="fn">every</span>(e <span class="op">=&gt;</span> e.salary > <span class="num">0</span>);
+<span class="fn">logSection</span>(
+  <span class="str">"BOOLEAN CHECKS (some / every)"</span>,
+  <span class="str">`Any employee with rating === 10? ${hasPerfectScorer ? <span class="str">"Yes"</span> : <span class="str">"No"</span>}`</span>,
+  <span class="str">`All salaries greater than 0? ${allSalariesValid ? <span class="str">"Yes"</span> : <span class="str">"No"</span>}`</span>
+);
+
+<span class="cm">// === reduce: Aggregate Values ===</span>
+<span class="kw">const</span> totalPayroll = employees.<span class="fn">reduce</span>((sum, emp) <span class="op">=&gt;</span> sum + emp.salary, <span class="num">0</span>);
+<span class="kw">const</span> averageRating = (employees.<span class="fn">reduce</span>((sum, emp) <span class="op">=&gt;</span> sum + emp.rating, <span class="num">0</span>) / employees.length).<span class="fn">toFixed</span>(<span class="num">2</span>);
+<span class="kw">const</span> departmentBreakdown = employees.<span class="fn">reduce</span>((acc, emp) <span class="op">=&gt;</span> {
+  acc[emp.department] = (acc[emp.department] || <span class="num">0</span>) + <span class="num">1</span>;
+  <span class="kw">return</span> acc;
+}, {});
+<span class="fn">logSection</span>(
+  <span class="str">"AGGREGATES (reduce)"</span>,
+  <span class="str">`Total monthly payroll: ${<span class="fn">formatSalary</span>(totalPayroll)}`</span>,
+  <span class="str">`Average rating: ${averageRating}/10`</span>,
+  <span class="str">`Department breakdown: ${<span class="fn">JSON</span>.<span class="fn">stringify</span>(departmentBreakdown)}`</span>
+);
+
+<span class="cm">// === sort: Two Criteria (always on a COPY) ===</span>
+<span class="kw">const</span> bySalary = [...employees].<span class="fn">sort</span>((a, b) <span class="op">=&gt;</span> b.salary - a.salary);
+<span class="kw">const</span> byName   = [...employees].<span class="fn">sort</span>((a, b) <span class="op">=&gt;</span> a.name.<span class="fn">localeCompare</span>(b.name));
+
+<span class="fn">logSection</span>(<span class="str">"SORTED BY SALARY — DESC (sort, copy)"</span>);
+bySalary.<span class="fn">forEach</span>((emp, i) <span class="op">=&gt;</span>
+  console.<span class="fn">log</span>(<span class="str">`${i + 1}. ${emp.name.<span class="fn">padEnd</span>(<span class="num">18</span>)} ${<span class="fn">formatSalary</span>(emp.salary)}`</span>)
+);
+<span class="fn">logSection</span>(<span class="str">"SORTED BY NAME — ASC (sort, copy)"</span>);
+byName.<span class="fn">forEach</span>((emp, i) <span class="op">=&gt;</span>
+  console.<span class="fn">log</span>(<span class="str">`${i + 1}. ${emp.name.<span class="fn">padEnd</span>(<span class="num">18</span>)} (${emp.department})`</span>)
+);
+console.<span class="fn">log</span>(<span class="str">"\nOriginal order preserved? "</span> + (employees[<span class="num">0</span>].name === <span class="str">"Ayesha Khan"</span>));
+
+<span class="cm">// === Chained Pipelines ===</span>
+<span class="kw">const</span> engineerRankingReport = employees
+  .<span class="fn">filter</span>(e <span class="op">=&gt;</span> e.active <span class="op">&amp;&amp;</span> e.department === <span class="str">"Engineering"</span>)
+  .<span class="fn">slice</span>()
+  .<span class="fn">sort</span>((a, b) <span class="op">=&gt;</span> b.rating - a.rating)
+  .<span class="fn">map</span>((emp, i) <span class="op">=&gt;</span> <span class="str">`#${i + 1} ${emp.name} — ${<span class="fn">formatRating</span>(emp.rating)}`</span>);
+
+<span class="fn">logSection</span>(<span class="str">"PIPELINE 1: Active Engineer Ranking"</span>, ...engineerRankingReport);
+
+<span class="kw">const</span> topEarnerCards = employees
+  .<span class="fn">filter</span>(e <span class="op">=&gt;</span> e.rating >= <span class="num">8</span>)
+  .<span class="fn">slice</span>()
+  .<span class="fn">sort</span>((a, b) <span class="op">=&gt;</span> b.salary - a.salary)
+  .<span class="fn">map</span>(e <span class="op">=&gt;</span> ({
+    <span class="prop">name</span>: e.name, <span class="prop">department</span>: e.department,
+    <span class="prop">salary</span>: <span class="fn">formatSalary</span>(e.salary), <span class="prop">rating</span>: <span class="fn">formatRating</span>(e.rating)
+  }));
+
+<span class="fn">logSection</span>(<span class="str">"PIPELINE 2: Top Earners Among High Performers"</span>);
+topEarnerCards.<span class="fn">forEach</span>(card <span class="op">=&gt;</span> console.<span class="fn">log</span>(card));
+
+<span class="cm">// === Final Summary ===</span>
+<span class="kw">const</span> topPerformer = [...employees].<span class="fn">sort</span>((a, b) <span class="op">=&gt;</span> b.rating - a.rating)[<span class="num">0</span>];
+<span class="fn">logSection</span>(
+  <span class="str">"FINAL SUMMARY"</span>,
+  <span class="str">`Total employees: ${employees.length}`</span>,
+  <span class="str">`Active employees: ${activeEmployees.length}`</span>,
+  <span class="str">`Departments: ${Object.<span class="fn">keys</span>(departmentBreakdown).<span class="fn">join</span>(<span class="str">", "</span>)}`</span>,
+  <span class="str">`Total payroll: ${<span class="fn">formatSalary</span>(totalPayroll)}`</span>,
+  <span class="str">`Average rating: ${averageRating}/10`</span>,
+  <span class="str">`Highest paid: ${bySalary[<span class="num">0</span>].name} (${<span class="fn">formatSalary</span>(bySalary[<span class="num">0</span>].salary)})`</span>,
+  <span class="str">`Top performer: ${topPerformer.name}`</span>
+);
+
+console.<span class="fn">log</span>(<span class="str">"\nAll checks complete. Assignment 11 reference solution finished.\n"</span>);</pre>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════
+     EXAM IMPORTANT QUESTIONS
+═════════════════════════════════════ -->
+      <section class="section" id="eq-flex">
+        <div class="section-header">
+          <span class="lec-badge r">EXAM Q1</span>
+          <h2>Flexbox in CSS ⭐ MUST KNOW</h2>
+        </div>
+
+        <div class="important-banner">
+          <div class="ib-label">⭐ Teacher said MUST</div>
+          <p>
+            Be ready to write Flexbox CSS from scratch. Know all container +
+            item properties and what each value does.
+          </p>
+        </div>
+
+        <div class="subsection">
+          <h4>Complete Flexbox Example</h4>
+          <div class="code-block">
+            <span class="code-label">navbar with flexbox</span>
+            <pre><span class="cm">/* HTML */</span>
+<span class="kw">&lt;nav</span> <span class="prop">class</span>=<span class="str">"navbar"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;div</span> <span class="prop">class</span>=<span class="str">"logo"</span><span class="kw">&gt;</span>Logo<span class="kw">&lt;/div&gt;</span>
+  <span class="kw">&lt;ul</span> <span class="prop">class</span>=<span class="str">"links"</span><span class="kw">&gt;</span>
+    <span class="kw">&lt;li&gt;</span>Home<span class="kw">&lt;/li&gt;&lt;li&gt;</span>About<span class="kw">&lt;/li&gt;&lt;li&gt;</span>Contact<span class="kw">&lt;/li&gt;</span>
+  <span class="kw">&lt;/ul&gt;</span>
+<span class="kw">&lt;/nav&gt;</span>
+
+<span class="cm">/* CSS */</span>
+<span class="prop">.navbar</span> {
+  <span class="prop">display</span>: flex;
+  <span class="prop">justify-content</span>: space-between; <span class="cm">/* logo left, links right */</span>
+  <span class="prop">align-items</span>: center;            <span class="cm">/* vertical center */</span>
+  <span class="prop">padding</span>: <span class="num">16px 32px</span>;
+}
+<span class="prop">.links</span> { <span class="prop">display</span>: flex; <span class="prop">gap</span>: <span class="num">24px</span>; <span class="prop">list-style</span>: none; }</pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Card Grid with Flexbox</h4>
+          <div class="code-block">
+            <pre><span class="prop">.card-container</span> {
+  <span class="prop">display</span>: flex;
+  <span class="prop">flex-wrap</span>: wrap;     <span class="cm">/* cards wrap to next line */</span>
+  <span class="prop">gap</span>: <span class="num">20px</span>;
+}
+<span class="prop">.card</span> {
+  <span class="prop">flex</span>: <span class="num">1 1 300px</span>;     <span class="cm">/* grow, shrink, min 300px */</span>
+  <span class="prop">max-width</span>: <span class="num">400px</span>;
+}</pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="eq-methods">
+        <div class="section-header">
+          <span class="lec-badge r">EXAM Q2</span>
+          <h2>Arrow Methods — reduce, map, filter</h2>
+        </div>
+
+        <div class="subsection">
+          <h4>Quick Cheat: map vs filter vs reduce</h4>
+          <div class="card">
+            <h3 class="green">At a Glance</h3>
+            <table class="ref-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Input → Output</th>
+                  <th>Use when you want to…</th>
+                </tr>
+              </thead>
+              <tr>
+                <td class="green">map</td>
+                <td>[n] → [n] same length</td>
+                <td>Transform every item</td>
+              </tr>
+              <tr>
+                <td class="green">filter</td>
+                <td>[n] → [≤n] shorter</td>
+                <td>Keep only matching items</td>
+              </tr>
+              <tr>
+                <td class="green">reduce</td>
+                <td>[n] → single value</td>
+                <td>Sum, count, group, etc.</td>
+              </tr>
+              <tr>
+                <td class="green">find</td>
+                <td>[n] → 1 item or undefined</td>
+                <td>Get first match</td>
+              </tr>
+              <tr>
+                <td class="green">some</td>
+                <td>[n] → boolean</td>
+                <td>Check if any match</td>
+              </tr>
+              <tr>
+                <td class="green">every</td>
+                <td>[n] → boolean</td>
+                <td>Check if all match</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="code-block">
+          <span class="code-label">all three together in a pipeline</span>
+          <pre><span class="kw">const</span> data = [
+  { <span class="prop">name</span>: <span class="str">"Ali"</span>, <span class="prop">score</span>: <span class="num">85</span>, <span class="prop">passed</span>: <span class="kw">true</span> },
+  { <span class="prop">name</span>: <span class="str">"Sara"</span>, <span class="prop">score</span>: <span class="num">40</span>, <span class="prop">passed</span>: <span class="kw">false</span> },
+  { <span class="prop">name</span>: <span class="str">"Usman"</span>, <span class="prop">score</span>: <span class="num">92</span>, <span class="prop">passed</span>: <span class="kw">true</span> },
+];
+
+<span class="cm">// 1. filter — only passed students</span>
+<span class="kw">const</span> passed = data.<span class="fn">filter</span>(s <span class="op">=&gt;</span> s.passed);
+
+<span class="cm">// 2. map — get their names</span>
+<span class="kw">const</span> names = passed.<span class="fn">map</span>(s <span class="op">=&gt;</span> s.name);
+<span class="cm">// ["Ali", "Usman"]</span>
+
+<span class="cm">// 3. reduce — total score of passed students</span>
+<span class="kw">const</span> total = passed.<span class="fn">reduce</span>((sum, s) <span class="op">=&gt;</span> sum + s.score, <span class="num">0</span>);
+<span class="cm">// 177</span>
+
+<span class="cm">// All in one chain:</span>
+<span class="kw">const</span> avgPassScore = data
+  .<span class="fn">filter</span>(s <span class="op">=&gt;</span> s.passed)
+  .<span class="fn">reduce</span>((sum, s, _, arr) <span class="op">=&gt;</span> sum + s.score / arr.length, <span class="num">0</span>);
+<span class="cm">// 88.5</span></pre>
+        </div>
+      </section>
+
+      <section class="section" id="eq-buttons">
+        <div class="section-header">
+          <span class="lec-badge r">EXAM Q3</span>
+          <h2>How to Create Buttons in HTML/CSS</h2>
+        </div>
+
+        <div class="subsection">
+          <h4>Basic Button HTML</h4>
+          <div class="code-block">
+            <pre><span class="cm">&lt;!-- All valid button types --&gt;</span>
+<span class="kw">&lt;button&gt;</span>Default Button<span class="kw">&lt;/button&gt;</span>
+<span class="kw">&lt;button</span> <span class="prop">type</span>=<span class="str">"button"</span><span class="kw">&gt;</span>Click Button<span class="kw">&lt;/button&gt;</span>
+<span class="kw">&lt;button</span> <span class="prop">type</span>=<span class="str">"submit"</span><span class="kw">&gt;</span>Submit Form<span class="kw">&lt;/button&gt;</span>
+<span class="kw">&lt;button</span> <span class="prop">type</span>=<span class="str">"reset"</span><span class="kw">&gt;</span>Reset Form<span class="kw">&lt;/button&gt;</span>
+<span class="kw">&lt;button</span> <span class="prop">disabled</span><span class="kw">&gt;</span>Disabled<span class="kw">&lt;/button&gt;</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Styling Buttons with CSS</h4>
+          <div class="code-block">
+            <pre><span class="prop">.btn</span> {
+  <span class="prop">background-color</span>: #3b82f6;
+  <span class="prop">color</span>: white;
+  <span class="prop">padding</span>: <span class="num">10px 24px</span>;
+  <span class="prop">border</span>: none;
+  <span class="prop">border-radius</span>: <span class="num">8px</span>;
+  <span class="prop">font-size</span>: <span class="num">16px</span>;
+  <span class="prop">cursor</span>: pointer;               <span class="cm">/* pointer on hover */</span>
+  <span class="prop">transition</span>: background <span class="num">0.3s</span>;
+}
+
+<span class="prop">.btn</span>:hover {
+  <span class="prop">background-color</span>: #2563eb;   <span class="cm">/* darker on hover */</span>
+}
+
+<span class="prop">.btn</span>:active {
+  <span class="prop">transform</span>: scale(<span class="num">0.97</span>);      <span class="cm">/* slight shrink on click */</span>
+}</pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>⭐ Place Button in Top-Right Corner</h4>
+          <div class="important-banner">
+            <div class="ib-label">Exam question example</div>
+            <p>
+              Teacher asked how to place a button in the right corner. Two main
+              ways below.
+            </p>
+          </div>
+          <div class="code-block">
+            <span class="code-label">Method 1 — Flexbox (recommended)</span>
+            <pre><span class="cm">&lt;!-- HTML --&gt;</span>
+<span class="kw">&lt;header</span> <span class="prop">class</span>=<span class="str">"header"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;h1&gt;</span>My App<span class="kw">&lt;/h1&gt;</span>
+  <span class="kw">&lt;button</span> <span class="prop">class</span>=<span class="str">"btn"</span><span class="kw">&gt;</span>Login<span class="kw">&lt;/button&gt;</span>
+<span class="kw">&lt;/header&gt;</span>
+
+<span class="cm">/* CSS */</span>
+<span class="prop">.header</span> {
+  <span class="prop">display</span>: flex;
+  <span class="prop">justify-content</span>: space-between; <span class="cm">/* h1 left, button right */</span>
+  <span class="prop">align-items</span>: center;
+  <span class="prop">padding</span>: <span class="num">16px 32px</span>;
+}</pre>
+          </div>
+          <div class="code-block">
+            <span class="code-label">Method 2 — Absolute Positioning</span>
+            <pre><span class="cm">&lt;!-- HTML --&gt;</span>
+<span class="kw">&lt;div</span> <span class="prop">class</span>=<span class="str">"container"</span><span class="kw">&gt;</span>
+  <span class="kw">&lt;button</span> <span class="prop">class</span>=<span class="str">"top-right-btn"</span><span class="kw">&gt;</span>Click Me<span class="kw">&lt;/button&gt;</span>
+<span class="kw">&lt;/div&gt;</span>
+
+<span class="cm">/* CSS */</span>
+<span class="prop">.container</span> {
+  <span class="prop">position</span>: relative; <span class="cm">/* needed for absolute child */</span>
+}
+<span class="prop">.top-right-btn</span> {
+  <span class="prop">position</span>: absolute;
+  <span class="prop">top</span>: <span class="num">16px</span>;
+  <span class="prop">right</span>: <span class="num">16px</span>;
+}</pre>
+          </div>
+          <div class="tip-banner">
+            <strong>Prefer Flexbox</strong> for navbars/headers. Use
+            <code>position: absolute</code> when you need the button to float
+            over content regardless of layout flow.
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="eq-condition">
+        <div class="section-header">
+          <span class="lec-badge r">EXAM Q4</span>
+          <h2>Conditional Colour — True = Green, False = Red</h2>
+        </div>
+
+        <div class="subsection">
+          <h4>JavaScript Conditional Styling</h4>
+          <div class="code-block">
+            <span class="code-label">inline style with ternary operator</span>
+            <pre><span class="cm">&lt;!-- Method 1: Inline style with JS ternary --&gt;</span>
+<span class="kw">&lt;script&gt;</span>
+  <span class="kw">const</span> isActive = <span class="kw">true</span>;
+  <span class="kw">const</span> el = document.<span class="fn">getElementById</span>(<span class="str">"status"</span>);
+  el.style.color = isActive ? <span class="str">"green"</span> : <span class="str">"red"</span>;
+<span class="kw">&lt;/script&gt;</span>
+
+<span class="cm">&lt;!-- Method 2: CSS Classes (best practice) --&gt;</span>
+<span class="kw">&lt;style&gt;</span>
+  <span class="prop">.text-success</span> { <span class="prop">color</span>: green; }
+  <span class="prop">.text-error</span>   { <span class="prop">color</span>: red; }
+<span class="kw">&lt;/style&gt;</span>
+
+<span class="kw">&lt;p</span> <span class="prop">id</span>=<span class="str">"status"</span><span class="kw">&gt;</span>Status message<span class="kw">&lt;/p&gt;</span>
+
+<span class="kw">&lt;script&gt;</span>
+  <span class="kw">const</span> condition = <span class="kw">true</span>;   <span class="cm">// or false</span>
+  <span class="kw">const</span> status = document.<span class="fn">getElementById</span>(<span class="str">"status"</span>);
+  status.className = condition ? <span class="str">"text-success"</span> : <span class="str">"text-error"</span>;
+  status.textContent = condition ? <span class="str">"✓ Active"</span> : <span class="str">"✗ Inactive"</span>;
+<span class="kw">&lt;/script&gt;</span></pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Full Working Example — Employee Status</h4>
+          <div class="code-block">
+            <pre><span class="kw">const</span> employees = [
+  { <span class="prop">name</span>: <span class="str">"Ayesha"</span>, <span class="prop">active</span>: <span class="kw">true</span> },
+  { <span class="prop">name</span>: <span class="str">"Hamza"</span>,  <span class="prop">active</span>: <span class="kw">false</span> },
+];
+
+employees.<span class="fn">forEach</span>(emp <span class="op">=&gt;</span> {
+  <span class="kw">const</span> p = document.<span class="fn">createElement</span>(<span class="str">"p"</span>);
+  p.textContent = emp.name;
+  p.style.color = emp.active ? <span class="str">"green"</span> : <span class="str">"red"</span>;
+  document.body.<span class="fn">appendChild</span>(p);
+});</pre>
+          </div>
+          <div class="tip-banner">
+            <strong>In CSS only</strong> — use <code>:checked</code>,
+            <code>:valid</code>, <code>:invalid</code> pseudo-classes on form
+            inputs to automatically show green/red without JavaScript.
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="eq-json">
+        <div class="section-header">
+          <span class="lec-badge r">EXAM Q5</span>
+          <h2>JSON File — Extract Data</h2>
+        </div>
+
+        <div class="subsection">
+          <h4>What is JSON?</h4>
+          <div class="tip-banner">
+            <strong>JSON</strong> (JavaScript Object Notation) is a text format
+            for storing/sharing data. It looks like a JS object but with strict
+            rules: keys must be in double quotes.
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>JSON Syntax Rules</h4>
+          <div class="content-grid">
+            <div class="card">
+              <h3 class="red">Valid JSON</h3>
+              <div class="code-block" style="margin-top: 10px">
+                <pre>{
+  <span class="str">"name"</span>: <span class="str">"Ayesha"</span>,
+  <span class="str">"age"</span>: <span class="num">25</span>,
+  <span class="str">"active"</span>: <span class="kw">true</span>,
+  <span class="str">"scores"</span>: [<span class="num">90</span>, <span class="num">85</span>, <span class="num">92</span>],
+  <span class="str">"address"</span>: {
+    <span class="str">"city"</span>: <span class="str">"Lahore"</span>
+  }
+}</pre>
+              </div>
+            </div>
+            <div class="card">
+              <h3 class="red">JSON Rules</h3>
+              <ul class="styled" style="margin-top: 8px">
+                <li><strong>Keys</strong> must use double quotes</li>
+                <li><strong>Strings</strong> must use double quotes</li>
+                <li><strong>No trailing commas</strong> after last item</li>
+                <li><strong>No comments</strong> allowed</li>
+                <li>Values: string, number, boolean, null, array, object</li>
+                <li><strong>No functions</strong> or undefined</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Parsing &amp; Extracting from JSON</h4>
+          <div class="code-block">
+            <pre><span class="cm">// ── JSON string → JS object ──</span>
+<span class="kw">const</span> jsonString = <span class="str">'{"name":"Ayesha","salary":180000,"scores":[90,85,92]}'</span>;
+<span class="kw">const</span> obj = <span class="fn">JSON</span>.<span class="fn">parse</span>(jsonString);
+
+<span class="cm">// Extract values</span>
+obj.name;           <span class="cm">// "Ayesha"</span>
+obj.salary;         <span class="cm">// 180000</span>
+obj.scores[<span class="num">0</span>];      <span class="cm">// 90</span>
+
+<span class="cm">// ── JS object → JSON string ──</span>
+<span class="kw">const</span> person = { <span class="prop">name</span>: <span class="str">"Bilal"</span>, <span class="prop">age</span>: <span class="num">30</span> };
+<span class="kw">const</span> json = <span class="fn">JSON</span>.<span class="fn">stringify</span>(person);
+<span class="cm">// '{"name":"Bilal","age":30}'</span>
+
+<span class="cm">// Pretty-print (2 spaces indent)</span>
+<span class="fn">JSON</span>.<span class="fn">stringify</span>(person, <span class="kw">null</span>, <span class="num">2</span>);</pre>
+          </div>
+        </div>
+
+        <div class="subsection">
+          <h4>Extracting from Nested/Array JSON — Like the Exam</h4>
+          <div class="code-block">
+            <pre><span class="cm">// Suppose this is the JSON given in the exam:</span>
+<span class="kw">const</span> data = {
+  <span class="str">"company"</span>: <span class="str">"TechCorp"</span>,
+  <span class="str">"employees"</span>: [
+    { <span class="str">"name"</span>: <span class="str">"Ayesha"</span>, <span class="str">"dept"</span>: <span class="str">"Engineering"</span>, <span class="str">"salary"</span>: <span class="num">180000</span> },
+    { <span class="str">"name"</span>: <span class="str">"Bilal"</span>,  <span class="str">"dept"</span>: <span class="str">"Engineering"</span>, <span class="str">"salary"</span>: <span class="num">220000</span> },
+    { <span class="str">"name"</span>: <span class="str">"Sana"</span>,   <span class="str">"dept"</span>: <span class="str">"Marketing"</span>,   <span class="str">"salary"</span>: <span class="num">120000</span> }
+  ]
+};
+
+<span class="cm">// Extract company name</span>
+data.company;                        <span class="cm">// "TechCorp"</span>
+
+<span class="cm">// Extract first employee's name</span>
+data.employees[<span class="num">0</span>].name;              <span class="cm">// "Ayesha"</span>
+
+<span class="cm">// All employee names</span>
+<span class="kw">const</span> names = data.employees.<span class="fn">map</span>(e <span class="op">=&gt;</span> e.name);
+<span class="cm">// ["Ayesha", "Bilal", "Sana"]</span>
+
+<span class="cm">// Only engineering employees</span>
+<span class="kw">const</span> engineers = data.employees.<span class="fn">filter</span>(e <span class="op">=&gt;</span> e.dept === <span class="str">"Engineering"</span>);
+
+<span class="cm">// Total salary</span>
+<span class="kw">const</span> total = data.employees.<span class="fn">reduce</span>((sum, e) <span class="op">=&gt;</span> sum + e.salary, <span class="num">0</span>);
+<span class="cm">// 520000</span></pre>
+          </div>
+          <div class="tip-banner">
+            <strong>Pattern to remember:</strong> <code>JSON.parse()</code> to
+            read/extract. <code>JSON.stringify()</code> to save/send. Once
+            parsed, use normal <code>.map()</code>, <code>.filter()</code>, dot
+            notation to extract anything.
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
